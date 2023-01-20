@@ -1,0 +1,22 @@
+---
+const { products } = Astro.props;
+---
+
+<section class="py-10">
+  <ul class="grid grid-cols-2 gap-10">
+    {
+      products.edges.map((product) => (
+        <li class="shadow-sm border rounded-sm">
+          <a href=`/products/${product.node.handle}` >
+          <div>
+            <img src={product.node.featuredImage.url} alt="" />
+          </div>
+          <div class="p-4">
+            {product.node.title}
+          </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

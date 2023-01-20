@@ -1,0 +1,28 @@
+---
+import { Shopify } from "./../../utils/shopify.js";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AddToCartForm from "../../components/AddToCartForm.svelte";
+const { handle } = Astro.params;
+
+const shopify = new Shopify();
+const product = await shopify.getProductByHandle(handle || "");
+const firstVariant = product.productByHandle.variants.nodes[0];
+---
+
+<BaseLayout>
+  <div class="grid mt-5 grid-cols-2 gap-5">
+    <img src={product.productByHandle.featuredImage.url} alt="" />
+    <div>
+      <h1>{product.productByHandle.title}</h1>
+      <div class="mt-10">
+        <AddToCartForm client:visible>
+          <input type="hidden" name="id" value={firstVariant.id} />
+          <input type="hidden" name="quantity" value="1" />
+          <button type="submit" class="rounded bg-slate-400 px-4 py-2">
+            Add to cart
+          </button>
+        </AddToCartForm>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

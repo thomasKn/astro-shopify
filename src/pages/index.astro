@@ -1,0 +1,13 @@
+---
+import { Shopify } from "./../utils/shopify.js";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Products from "../components/Products.astro";
+
+const title = "Astro + Shopify";
+const shopify = new Shopify();
+const { products } = await shopify.getProducts();
+---
+
+<BaseLayout title={title}>
+  <Products products={products} />
+</BaseLayout>

@@ -3,7 +3,13 @@
 
   function addToCart(e: Event) {
     const form = e.target as HTMLFormElement;
-    addCartItem(form);
+    const formData = new FormData(form);
+    const { id, quantity } = Object.fromEntries(formData);
+    const item = {
+      id: id as string,
+      quantity: parseInt(quantity as string),
+    };
+    addCartItem(item);
   }
 </script>
 

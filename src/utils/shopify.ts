@@ -1,90 +1,114 @@
-import type { Product, Cart } from "../utils/types";
+import { z } from "zod";
+import { CartResult, ProductResult } from "./schemas";
+import { config } from "./config";
 import {
   ProductsQuery,
   ProductByHandleQuery,
   CreateCartMutation,
   AddCartLinesMutation,
-  RetrieveCartQuery,
+  GetCartQuery,
+  RemoveCartLinesMutation,
 } from "./graphql";
 
-const SHOPIFY_SHOP = import.meta.env.PUBLIC_SHOPIFY_SHOP;
-const SHOPIFY_STOREFRONT_ACCESS_TOKEN = import.meta.env
-  .PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN;
-const API_VERSION = "2023-01";
+// Make a request to Shopify's GraphQL API  and return the data object from the response body as JSON data.
+const makeShopifyRequest = async (
+  query: string,
+  variables: Record<string, unknown> = {}
+) => {
+  const apiUrl = `https://${config.shopifyShop}/api/${config.apiVersion}/graphql.json`;
 
-export class Shopify {
-  apiUrl: string;
-  constructor() {
-    this.apiUrl = `https://${SHOPIFY_SHOP}/api/${API_VERSION}/graphql.json`;
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Shopify-Storefront-Access-Token": config.shopifyAccessToken,
+    },
+    body: JSON.stringify({ query, variables }),
+  };
+
+  const response = await fetch(apiUrl, options);
+
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`${response.status} ${body}`);
   }
 
-  async graphQL(query: string, variables: Record<string, unknown> = {}) {
-    const config = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Shopify-Storefront-Access-Token": SHOPIFY_STOREFRONT_ACCESS_TOKEN,
-      },
-      body: JSON.stringify({ query, variables }),
-    };
-
-    const response = await fetch(this.apiUrl, config);
-
-    if (!response.ok) {
-      const body = await response.text();
-      throw new Error(`${response.status} ${body}`);
-    }
-
-    const json = await response.json();
-    if (json.errors) {
-      throw new Error(json.errors.map((e: Error) => e.message).join("\n"));
-    }
-
-    return json.data;
+  const json = await response.json();
+  if (json.errors) {
+    throw new Error(json.errors.map((e: Error) => e.message).join("\n"));
   }
 
-  async getProducts(options = { limit: 10 }) {
-    const { limit } = options;
-    const data = await this.graphQL(ProductsQuery, { first: limit });
-    const { products } = data;
-    const productsList = products.edges.map((edge: any) => edge.node);
+  return json.data;
+};
 
-    return productsList as Product[];
-  }
+// Get all products or a limited number of products (default: 10)
+export const getProducts = async (options = { limit: 10 }) => {
+  const { limit } = options;
+  const data = await makeShopifyRequest(ProductsQuery, { first: limit });
+  const { products } = data;
+  const productsList = products.edges.map((edge: any) => edge.node);
+  const ProductsResult = z.array(ProductResult);
+  const parsedProducts = ProductsResult.parse(productsList);
 
-  async getProductByHandle(handle: string) {
-    const data = await this.graphQL(ProductByHandleQuery, { handle });
-    const { productByHandle } = data;
-    return productByHandle as Product;
-  }
+  return parsedProducts;
+};
 
-  // todo handle OOS line items when adding to cart
-  async createCart(id: FormDataEntryValue, quantity: FormDataEntryValue) {
-    const data = await this.graphQL(CreateCartMutation, {
-      id,
-      quantity: parseInt(quantity as string),
-    });
-    const { cart } = data.cartCreate;
-    return cart as Cart;
-  }
+// Get a product by its handle (slug)
+export const getProductByHandle = async (handle: string) => {
+  const data = await makeShopifyRequest(ProductByHandleQuery, { handle });
+  const { productByHandle } = data;
+  const parsedProduct = ProductResult.parse(productByHandle);
 
-  async cartLinesAdd(
-    id: string,
-    merchandiseId: FormDataEntryValue,
-    quantity: FormDataEntryValue
-  ) {
-    const data = await this.graphQL(AddCartLinesMutation, {
-      cartId: id,
-      merchandiseId,
-      quantity: parseInt(quantity as string),
-    });
-    const { cart } = data.cartLinesAdd;
-    return cart as Cart;
-  }
+  return parsedProduct;
+};
 
-  async retrieveCart(id: string) {
-    const data = await this.graphQL(RetrieveCartQuery, { id });
-    const cart = data.cartCreate.cart;
-    return cart as Cart;
-  }
-}
+// Create a cart and add a line item to it and return the cart object
+// todo handle OOS line items when adding to cart
+export const createCart = async (id: string, quantity: number) => {
+  const data = await makeShopifyRequest(CreateCartMutation, { id, quantity });
+  const { cartCreate } = data;
+  const { cart } = cartCreate;
+  const parsedCart = CartResult.parse(cart);
+
+  return parsedCart;
+};
+
+// Add a line item to an existing cart (by ID) and return the updated cart object
+export const addCartLines = async (
+  id: string,
+  merchandiseId: string,
+  quantity: number
+) => {
+  const data = await makeShopifyRequest(AddCartLinesMutation, {
+    cartId: id,
+    merchandiseId,
+    quantity,
+  });
+  const { cartLinesAdd } = data;
+  const { cart } = cartLinesAdd;
+  const parsedCart = CartResult.parse(cart);
+
+  return parsedCart;
+};
+
+// Remove line items from an existing cart (by IDs) and return the updated cart object
+export const removeCartLines = async (id: string, lineIds: string[]) => {
+  const data = await makeShopifyRequest(RemoveCartLinesMutation, {
+    cartId: id,
+    lineIds,
+  });
+  const { cartLinesRemove } = data;
+  const { cart } = cartLinesRemove;
+  const parsedCart = CartResult.parse(cart);
+
+  return parsedCart;
+};
+
+// Get a cart by its ID and return the cart object
+export const getCart = async (id: string) => {
+  const data = await makeShopifyRequest(GetCartQuery, { id });
+  const { cart } = data;
+  const parsedCart = CartResult.parse(cart);
+
+  return parsedCart;
+};

@@ -1,9 +1,12 @@
 ---
-import type { Product } from "../utils/types";
-export interface Props {
-  products: Product[];
-}
+import { z } from "zod";
+import { ProductResult } from "../utils/schemas";
+import ShopifyImage from "./ShopifyImage.svelte";
 
+const ProductsResult = z.array(ProductResult);
+export interface Props {
+  products: z.infer<typeof ProductsResult>;
+}
 const { products } = Astro.props as Props;
 ---
 
@@ -14,9 +17,17 @@ const { products } = Astro.props as Props;
         <li class="shadow-sm border rounded-sm">
           <a href={`/products/${product.handle}`}>
             <div>
-              <img
-                src={product.featuredImage.url}
-                alt={product.featuredImage.altText}
+              <ShopifyImage
+                loading="eager"
+                image={product.featuredImage}
+                sizes={`
+                  (min-width: 1540px) 722px,
+                  (min-width: 1280px) 594px,
+                  (min-width: 1040px) 466px,
+                  (min-width: 780px) 338px,
+                  (min-width: 680px) 274px,
+                  calc(47.22vw - 38px)
+                `}
               />
             </div>
             <div class="p-4">{product.title}</div>

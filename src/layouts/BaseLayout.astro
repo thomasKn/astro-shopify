@@ -3,7 +3,12 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import CartDrawer from "../components/CartDrawer.svelte";
 import AnnouncementBar from "../components/AnnouncementBar.astro";
-const { title } = Astro.props;
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props as Props;
 ---
 
 <html lang="en">
@@ -19,7 +24,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <AnnouncementBar />
-    <CartDrawer client:load />
+    <CartDrawer client:only />
     <Header />
     <main class="container">
       <slot />

@@ -17,7 +17,8 @@
     "@nanostores/persistent": "^0.7.0",
     "astro": "^1.9.0",
     "nanostores": "^0.7.1",
-    "svelte": "^3.46.4"
+    "svelte": "^3.46.4",
+    "zod": "^3.20.2"
   },
   "devDependencies": {
     "prettier": "^2.8.3",

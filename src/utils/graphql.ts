@@ -3,6 +3,12 @@ fragment cartFragment on Cart {
   id
   totalQuantity
   checkoutUrl
+  cost {
+    totalAmount {
+      amount
+      currencyCode
+    }
+  }
   lines(first: 100) {
     nodes {
       id
@@ -79,7 +85,7 @@ export const ProductByHandleQuery = `
   ${PRODUCT_FRAGMENT}
 `;
 
-export const RetrieveCartQuery = `
+export const GetCartQuery = `
   query ($id: ID!) {
     cart(id: $id) {
       ...cartFragment
@@ -106,6 +112,21 @@ export const CreateCartMutation = `
 export const AddCartLinesMutation = `
   mutation ($cartId: ID!, $merchandiseId: ID!, $quantity: Int) {
     cartLinesAdd (cartId: $cartId, lines: [{ merchandiseId: $merchandiseId, quantity: $quantity }]) {
+      cart {
+        ...cartFragment
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+  ${CART_FRAGMENT}
+`;
+
+export const RemoveCartLinesMutation = `
+  mutation ($cartId: ID!, $lineIds: [ID!]!) {
+    cartLinesRemove (cartId: $cartId, lineIds: $lineIds) {
       cart {
         ...cartFragment
       }

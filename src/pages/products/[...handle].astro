@@ -1,21 +1,38 @@
 ---
-import { Shopify } from "./../../utils/shopify.js";
+import { getProductByHandle } from "./../../utils/shopify.js";
+import { setCache } from "../../utils/cache";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AddToCartForm from "../../components/AddToCartForm.svelte";
+import ShopifyImage from "../../components/ShopifyImage.svelte";
 const { handle } = Astro.params;
 
-const shopify = new Shopify();
-const product = await shopify.getProductByHandle(handle || "");
+const product = await getProductByHandle(handle || "");
 const firstVariant = product.variants.nodes[0];
+setCache.short(Astro);
 ---
 
-<BaseLayout>
+<BaseLayout title={product.title}>
   <div class="grid mt-5 grid-cols-2 gap-5">
-    <img src={product.featuredImage.url} alt="" />
+    <ShopifyImage
+      loading="eager"
+      image={product.featuredImage}
+      sizes={`
+        (min-width: 1540px) 734px,
+        (min-width: 1280px) 606px,
+        (min-width: 1040px) 478px,
+        (min-width: 780px) 350px,
+        (min-width: 680px) 286px,
+        calc(47.22vw - 26px)
+      `}
+    />
     <div>
       <h1>{product.title}</h1>
+      <div>
+        {firstVariant.priceV2.amount}
+        {firstVariant.priceV2.currencyCode}
+      </div>
       <div class="mt-10">
-        <AddToCartForm client:visible>
+        <AddToCartForm client:only>
           <input type="hidden" name="id" value={firstVariant.id} />
           <input type="hidden" name="quantity" value="1" />
           <button type="submit" class="rounded bg-slate-400 px-4 py-2">

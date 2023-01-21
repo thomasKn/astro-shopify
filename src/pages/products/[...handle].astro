@@ -6,14 +6,14 @@ const { handle } = Astro.params;
 
 const shopify = new Shopify();
 const product = await shopify.getProductByHandle(handle || "");
-const firstVariant = product.productByHandle.variants.nodes[0];
+const firstVariant = product.variants.nodes[0];
 ---
 
 <BaseLayout>
   <div class="grid mt-5 grid-cols-2 gap-5">
-    <img src={product.productByHandle.featuredImage.url} alt="" />
+    <img src={product.featuredImage.url} alt="" />
     <div>
-      <h1>{product.productByHandle.title}</h1>
+      <h1>{product.title}</h1>
       <div class="mt-10">
         <AddToCartForm client:visible>
           <input type="hidden" name="id" value={firstVariant.id} />

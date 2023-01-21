@@ -33,18 +33,16 @@
     </div>
     <div class="text-xl font-bold">Your Cart</div>
     <div class="mt-8">
-      {#if $cart.cartItems.length === 0}
+      {#if $cart.lines?.nodes.length === 0}
         <div class="text-center text-gray-500">Your cart is empty</div>
       {:else}
         <ul class="grid gap-4">
-          {#each $cart.cartItems as item}
+          {#each $cart.lines?.nodes as item}
             <li class="flex items-center gap-3">
               <img
                 src={item.merchandise.image.url}
                 class="w-12"
-                alt={item.merchandise.image.altText
-                  ? item.merchandise.image.altText
-                  : ""}
+                alt={item.merchandise.image.altText}
               />
               <div>
                 <div class="text-sm font-bold">

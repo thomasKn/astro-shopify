@@ -1,0 +1,119 @@
+const CART_FRAGMENT = `
+fragment cartFragment on Cart {
+  id
+  totalQuantity
+  checkoutUrl
+  lines(first: 100) {
+    nodes {
+      id
+      quantity
+      merchandise {
+        ...on ProductVariant {
+          title
+          image {
+            url
+            altText
+            width
+            height
+          }
+          product {
+            title
+          }
+        }
+      }
+      estimatedCost {
+        totalAmount {
+          amount
+          currencyCode
+        }
+      }
+    }
+  }
+}
+`;
+
+const PRODUCT_FRAGMENT = `
+fragment productFragment on Product {
+  id
+  title
+  handle
+  variants(first: 10) {
+    nodes {
+      id
+      title
+      availableForSale
+      priceV2 {
+        amount
+        currencyCode
+      }
+    }
+  }
+  featuredImage {
+    url(transform: {preferredContentType: WEBP})
+    width
+    height
+    altText
+  }
+}
+`;
+
+export const ProductsQuery = `
+query ($first: Int!) {
+    products(first: $first) {
+      edges {
+        node {
+          ...productFragment
+        }
+      }
+    }
+  }
+  ${PRODUCT_FRAGMENT}
+`;
+
+export const ProductByHandleQuery = `
+  query ($handle: String!) {
+    productByHandle(handle: $handle) {
+      ...productFragment
+    }
+  }
+  ${PRODUCT_FRAGMENT}
+`;
+
+export const RetrieveCartQuery = `
+  query ($id: ID!) {
+    cart(id: $id) {
+      ...cartFragment
+    }
+  }
+  ${CART_FRAGMENT}
+`;
+
+export const CreateCartMutation = `
+  mutation ($id: ID!, $quantity: Int!) {
+    cartCreate (input: { lines: [{ merchandiseId: $id, quantity: $quantity }] }) {
+      cart {
+        ...cartFragment
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+  ${CART_FRAGMENT}
+`;
+
+export const AddCartLinesMutation = `
+  mutation ($cartId: ID!, $merchandiseId: ID!, $quantity: Int) {
+    cartLinesAdd (cartId: $cartId, lines: [{ merchandiseId: $merchandiseId, quantity: $quantity }]) {
+      cart {
+        ...cartFragment
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+  ${CART_FRAGMENT}
+`;

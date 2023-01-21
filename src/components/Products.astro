@@ -1,19 +1,25 @@
 ---
-const { products } = Astro.props;
+import type { Product } from "../utils/types";
+export interface Props {
+  products: Product[];
+}
+
+const { products } = Astro.props as Props;
 ---
 
 <section class="py-10">
   <ul class="grid grid-cols-2 gap-10">
     {
-      products.edges.map((product) => (
+      products.map((product) => (
         <li class="shadow-sm border rounded-sm">
-          <a href=`/products/${product.node.handle}` >
-          <div>
-            <img src={product.node.featuredImage.url} alt="" />
-          </div>
-          <div class="p-4">
-            {product.node.title}
-          </div>
+          <a href={`/products/${product.handle}`}>
+            <div>
+              <img
+                src={product.featuredImage.url}
+                alt={product.featuredImage.altText}
+              />
+            </div>
+            <div class="p-4">{product.title}</div>
           </a>
         </li>
       ))

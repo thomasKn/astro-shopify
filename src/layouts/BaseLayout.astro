@@ -4,7 +4,6 @@ import Footer from "../components/Footer.astro";
 import CartDrawer from "../components/CartDrawer.svelte";
 import AnnouncementBar from "../components/AnnouncementBar.astro";
 const { title } = Astro.props;
-const message = "Free shipping on all orders over $99";
 ---
 
 <html lang="en">
@@ -19,7 +18,7 @@ const message = "Free shipping on all orders over $99";
     </style>
   </head>
   <body>
-    <AnnouncementBar message={message} />
+    <AnnouncementBar />
     <CartDrawer client:load />
     <Header />
     <main class="container">

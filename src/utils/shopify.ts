@@ -46,6 +46,11 @@ export const getProducts = async (options = { limit: 10 }) => {
   const { limit } = options;
   const data = await makeShopifyRequest(ProductsQuery, { first: limit });
   const { products } = data;
+
+  if (!products) {
+    throw new Error("No products found");
+  }
+
   const productsList = products.edges.map((edge: any) => edge.node);
   const ProductsResult = z.array(ProductResult);
   const parsedProducts = ProductsResult.parse(productsList);
@@ -57,6 +62,12 @@ export const getProducts = async (options = { limit: 10 }) => {
 export const getProductByHandle = async (handle: string) => {
   const data = await makeShopifyRequest(ProductByHandleQuery, { handle });
   const { productByHandle } = data;
+
+  if (!productByHandle) {
+    // If product is not found, null is returned instead of an error being thrown so that the page can be rendered with a 404 status code
+    return productByHandle;
+  }
+
   const parsedProduct = ProductResult.parse(productByHandle);
 
   return parsedProduct;

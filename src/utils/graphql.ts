@@ -23,6 +23,7 @@ fragment cartFragment on Cart {
             height
           }
           product {
+            handle
             title
           }
         }
@@ -43,6 +44,14 @@ fragment productFragment on Product {
   id
   title
   handle
+  images (first: 10) {
+    nodes {
+      url(transform: {preferredContentType: WEBP})
+      width
+      height
+      altText
+    }
+  }
   variants(first: 10) {
     nodes {
       id
@@ -79,6 +88,15 @@ query ($first: Int!) {
 export const ProductByHandleQuery = `
   query ($handle: String!) {
     productByHandle(handle: $handle) {
+      ...productFragment
+    }
+  }
+  ${PRODUCT_FRAGMENT}
+`;
+
+export const ProductRecommendationsQuery = `
+  query ($productId: ID!) {
+    productRecommendations(productId: $productId) {
       ...productFragment
     }
   }

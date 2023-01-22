@@ -10,30 +10,38 @@ export interface Props {
 const { products } = Astro.props as Props;
 ---
 
-<section class="py-10">
-  <ul class="grid grid-cols-2 gap-10">
-    {
-      products.map((product) => (
-        <li class="shadow-sm border rounded-sm">
-          <a href={`/products/${product.handle}`}>
-            <div>
+<section>
+  <div class="py-16 sm:py-20">
+    <h2 class="sr-only">Products</h2>
+
+    <div
+      class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
+    >
+      {
+        products.map((product) => (
+          <a href={`/products/${product.handle}`} class="group">
+            <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
               <ShopifyImage
+                classList="h-full w-full object-cover object-center group-hover:opacity-75"
                 loading="eager"
                 image={product.featuredImage}
                 sizes={`
-                  (min-width: 1540px) 722px,
-                  (min-width: 1280px) 594px,
-                  (min-width: 1040px) 466px,
-                  (min-width: 780px) 338px,
-                  (min-width: 680px) 274px,
-                  calc(47.22vw - 38px)
+                  (min-width: 1540px) 348px,
+                  (min-width: 1280px) 284px,
+                  (min-width: 1040px) 309px,
+                  (min-width: 780px) 348px,
+                  (min-width: 640px) 284px,
+                  calc(100vw - 48px)
                 `}
               />
             </div>
-            <div class="p-4">{product.title}</div>
+            <h3 class="mt-4 text-sm text-gray-700">{product.title}</h3>
+            <p class="mt-1 text-lg font-medium text-gray-900">
+              {product.variants.nodes[0].priceV2.amount}
+            </p>
           </a>
-        </li>
-      ))
-    }
-  </ul>
+        ))
+      }
+    </div>
+  </div>
 </section>

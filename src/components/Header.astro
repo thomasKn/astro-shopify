@@ -3,18 +3,20 @@ import Logo from "./Logo.astro";
 import CartIcon from "./CartIcon.svelte";
 ---
 
-<header class="sticky top-0">
-  <div class="py-3 bg-gray-100">
-    <div>
-      <nav class="grid grid-cols-3 items-center container">
-        <a href="/">
-          <Logo />
-        </a>
-        <h1 class="flex justify-center text-xl font-bold">Astro x Shopify</h1>
-        <div class="justify-self-end">
-          <CartIcon client:only />
-        </div>
-      </nav>
-    </div>
+<header class="sticky top-0 z-40">
+  <div class="py-3 border-b bg-white">
+    <nav class="grid grid-cols-3 items-center container">
+      <a href="/">
+        <Logo />
+      </a>
+      <h1
+        class="flex justify-center font-semibold text-gray-900 text-sm sm:text-xl"
+      >
+        Astro 🧑‍🚀 Shopify
+      </h1>
+      <div class="justify-self-end">
+        <CartIcon client:only />
+      </div>
+    </nav>
   </div>
 </header>

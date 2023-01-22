@@ -30,6 +30,7 @@ export const CartItemResult = z.object({
     title: z.string(),
     product: z.object({
       title: z.string(),
+      handle: z.string(),
     }),
     image: ImageResult,
   }),
@@ -59,6 +60,9 @@ export const ProductResult = z.object({
   id: z.string(),
   title: z.string(),
   handle: z.string(),
+  images: z.object({
+    nodes: z.array(ImageResult),
+  }),
   variants: z.object({
     nodes: z.array(VariantResult),
   }),

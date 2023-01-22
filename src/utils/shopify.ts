@@ -8,6 +8,7 @@ import {
   AddCartLinesMutation,
   GetCartQuery,
   RemoveCartLinesMutation,
+  ProductRecommendationsQuery,
 } from "./graphql";
 
 // Make a request to Shopify's GraphQL API  and return the data object from the response body as JSON data.
@@ -63,14 +64,22 @@ export const getProductByHandle = async (handle: string) => {
   const data = await makeShopifyRequest(ProductByHandleQuery, { handle });
   const { productByHandle } = data;
 
-  if (!productByHandle) {
-    // If product is not found, null is returned instead of an error being thrown so that the page can be rendered with a 404 status code
-    return productByHandle;
-  }
-
+  // todo handle product not found
   const parsedProduct = ProductResult.parse(productByHandle);
 
   return parsedProduct;
+};
+
+export const getProductRecommendations = async (productId: string) => {
+  const data = await makeShopifyRequest(ProductRecommendationsQuery, {
+    productId,
+  });
+  const { productRecommendations } = data;
+
+  const ProductsResult = z.array(ProductResult);
+  const parsedProducts = ProductsResult.parse(productRecommendations);
+
+  return parsedProducts;
 };
 
 // Create a cart and add a line item to it and return the cart object

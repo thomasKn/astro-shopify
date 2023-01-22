@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade, fly } from "svelte/transition";
   import { cart, isCartDrawerOpen, removeCartItems } from "../stores/cart";
   import ShopifyImage from "./ShopifyImage.svelte";
 
@@ -11,93 +12,166 @@
   }
 </script>
 
-<div
-  class="
-    {$isCartDrawerOpen ? 'grid' : 'hidden'}
-    fixed inset-0 justify-end z-50 bg-black/60
-  "
->
-  <div class="w-96 h-screen p-6 relative bg-white">
-    <div class="absolute right-3 top-3">
-      <button on:click={() => closeCartDrawer()}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
+{#if $isCartDrawerOpen}
+  <div
+    class="relative z-50"
+    aria-labelledby="slide-over-title"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div
+      in:fade={{ duration: 500 }}
+      out:fade={{ duration: 500 }}
+      class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+    />
+
+    <div class="fixed inset-0 overflow-hidden">
+      <div class="absolute inset-0 overflow-hidden">
+        <div
+          class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-    </div>
-    <div class="text-2xl font-bold">Your Cart</div>
-    <div class="mt-8">
-      {#if $cart.lines?.nodes.length === 0}
-        <div class="text-center text-gray-500">Your cart is empty</div>
-      {:else}
-        <ul class="grid gap-4">
-          {#each $cart.lines?.nodes as item}
-            <li class="grid items-center grid-cols-10 gap-3">
-              <ShopifyImage
-                image={item.merchandise.image}
-                classList="w-12 col-span-2"
-                sizes="(min-width: 100px) 50px"
-                loading="lazy"
-              />
-              <div class="col-span-5">
-                <div class="text-sm font-bold">
-                  {item.merchandise.product.title}
-                </div>
-                <div>{item.quantity}</div>
-              </div>
-              <div class="col-span-3 flex justify-end">
-                <button
-                  on:click={() => {
-                    removeItem(item.id);
-                  }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-5 h-5"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </li>
-          {/each}
-        </ul>
-        <div class="mt-8">
-          <div class="text-xl font-bold">
-            {$cart.cost.totalAmount.amount}
-            {$cart.cost.totalAmount.currencyCode}
-          </div>
-          <div class="mt-5">
-            <a
-              href={$cart.checkoutUrl}
-              rel="noopener noreferrer"
-              class="py-2 px-4 bg-black text-white rounded"
-              target="_blank"
+          <div
+            in:fly={{ duration: 500, x: 500, opacity: 100 }}
+            out:fly={{ duration: 500, x: 500, opacity: 100 }}
+            class="pointer-events-auto w-screen max-w-md"
+          >
+            <div
+              class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl"
             >
-              Proceed to checkout
-            </a>
+              <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
+                <div class="flex items-start justify-between">
+                  <h2
+                    class="text-lg font-medium text-gray-900"
+                    id="slide-over-title"
+                  >
+                    Shopping cart
+                  </h2>
+                  <div class="ml-3 flex h-7 items-center">
+                    <button
+                      on:click={() => closeCartDrawer()}
+                      type="button"
+                      class="-m-2 p-2 text-gray-400 hover:text-gray-500"
+                    >
+                      <span class="sr-only">Close panel</span>
+                      <!-- Heroicon name: outline/x-mark -->
+                      <svg
+                        class="h-6 w-6"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="mt-8">
+                  <div class="flow-root">
+                    <ul role="list" class="-my-6 divide-y divide-gray-200">
+                      {#each $cart.lines?.nodes as item}
+                        <li class="flex py-6">
+                          <div
+                            class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+                          >
+                            <ShopifyImage
+                              image={item.merchandise.image}
+                              classList="h-full w-full object-cover object-center"
+                              sizes="(min-width: 100px) 100px"
+                              loading="lazy"
+                            />
+                          </div>
+
+                          <div class="ml-4 flex flex-1 flex-col">
+                            <div>
+                              <div
+                                class="flex justify-between text-base font-medium text-gray-900"
+                              >
+                                <a
+                                  href={`/products/${item.merchandise.product.handle}`}
+                                >
+                                  <h3>
+                                    {item.merchandise.product.title}
+                                  </h3>
+                                </a>
+                                <p class="ml-4">
+                                  {item.estimatedCost.totalAmount.amount}
+                                </p>
+                              </div>
+                              <p class="mt-1 text-sm text-gray-500">
+                                {item.merchandise.title}
+                              </p>
+                            </div>
+                            <div
+                              class="flex flex-1 items-end justify-between text-sm"
+                            >
+                              <p class="text-gray-500">Qty {item.quantity}</p>
+
+                              <div class="flex">
+                                <button
+                                  on:click={() => {
+                                    removeItem(item.id);
+                                  }}
+                                  type="button"
+                                  class="font-semibold text-emerald-900 hover:text-emerald-700"
+                                  >Remove</button
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      {/each}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+                <div
+                  class="flex justify-between text-base font-medium text-gray-900"
+                >
+                  <p>Subtotal</p>
+                  <p>
+                    {$cart.cost.totalAmount.amount}
+                    {$cart.cost.totalAmount.currencyCode}
+                  </p>
+                </div>
+                <p class="mt-0.5 text-sm text-gray-500">
+                  Shipping and taxes calculated at checkout.
+                </p>
+                <div class="mt-6">
+                  <a
+                    href={$cart.checkoutUrl}
+                    class="flex items-center justify-center rounded-md border border-transparent bg-emerald-900 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-emerald-800"
+                    >Checkout</a
+                  >
+                </div>
+                <div
+                  class="mt-6 flex justify-center text-center text-sm text-gray-500"
+                >
+                  <p>
+                    or
+                    <a
+                      href="/"
+                      class="font-semibold text-emerald-900 hover:text-emerald-700"
+                    >
+                      Continue Shopping
+                      <span aria-hidden="true"> &rarr;</span>
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      {/if}
+      </div>
     </div>
   </div>
-</div>
+{/if}

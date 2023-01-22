@@ -75,99 +75,114 @@
 
                 <div class="mt-8">
                   <div class="flow-root">
-                    <ul role="list" class="-my-6 divide-y divide-gray-200">
-                      {#each $cart.lines?.nodes as item}
-                        <li class="flex py-6">
-                          <div
-                            class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
-                          >
-                            <ShopifyImage
-                              image={item.merchandise.image}
-                              classList="h-full w-full object-cover object-center"
-                              sizes="(min-width: 100px) 100px"
-                              loading="lazy"
-                            />
-                          </div>
+                    {#if $cart.lines?.nodes.length > 0}
+                      <ul role="list" class="-my-6 divide-y divide-gray-200">
+                        {#each $cart.lines?.nodes as item}
+                          <li class="flex py-6">
+                            <div
+                              class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+                            >
+                              <ShopifyImage
+                                image={item.merchandise.image}
+                                classList="h-full w-full object-cover object-center"
+                                sizes="(min-width: 100px) 100px"
+                                loading="lazy"
+                              />
+                            </div>
 
-                          <div class="ml-4 flex flex-1 flex-col">
-                            <div>
-                              <div
-                                class="flex justify-between text-base font-medium text-gray-900"
-                              >
-                                <a
-                                  href={`/products/${item.merchandise.product.handle}`}
+                            <div class="ml-4 flex flex-1 flex-col">
+                              <div>
+                                <div
+                                  class="flex justify-between text-base font-medium text-gray-900"
                                 >
-                                  <h3>
-                                    {item.merchandise.product.title}
-                                  </h3>
-                                </a>
-                                <p class="ml-4">
-                                  {item.estimatedCost.totalAmount.amount}
+                                  <a
+                                    href={`/products/${item.merchandise.product.handle}`}
+                                  >
+                                    <h3>
+                                      {item.merchandise.product.title}
+                                    </h3>
+                                  </a>
+                                  <p class="ml-4">
+                                    {item.estimatedCost.totalAmount.amount}
+                                  </p>
+                                </div>
+                                <p class="mt-1 text-sm text-gray-500">
+                                  {item.merchandise.title}
                                 </p>
                               </div>
-                              <p class="mt-1 text-sm text-gray-500">
-                                {item.merchandise.title}
-                              </p>
-                            </div>
-                            <div
-                              class="flex flex-1 items-end justify-between text-sm"
-                            >
-                              <p class="text-gray-500">Qty {item.quantity}</p>
+                              <div
+                                class="flex flex-1 items-end justify-between text-sm"
+                              >
+                                <p class="text-gray-500">Qty {item.quantity}</p>
 
-                              <div class="flex">
-                                <button
-                                  on:click={() => {
-                                    removeItem(item.id);
-                                  }}
-                                  type="button"
-                                  class="font-semibold text-emerald-900 hover:text-emerald-700"
-                                  >Remove</button
-                                >
+                                <div class="flex">
+                                  <button
+                                    on:click={() => {
+                                      removeItem(item.id);
+                                    }}
+                                    type="button"
+                                    class="font-semibold text-emerald-900 hover:text-emerald-700"
+                                    >Remove</button
+                                  >
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </li>
-                      {/each}
-                    </ul>
+                          </li>
+                        {/each}
+                      </ul>
+                    {:else}
+                      <div class="text-center mt-20">
+                        <p class="text-gray-500">Your cart is empty</p>
+                        <a
+                          href="/"
+                          class="font-semibold text-emerald-900 hover:text-emerald-700"
+                        >
+                          Continue Shopping
+                          <span aria-hidden="true"> &rarr;</span>
+                        </a>
+                      </div>
+                    {/if}
                   </div>
                 </div>
               </div>
 
-              <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
-                <div
-                  class="flex justify-between text-base font-medium text-gray-900"
-                >
-                  <p>Subtotal</p>
-                  <p>
-                    {$cart.cost.totalAmount.amount}
-                    {$cart.cost.totalAmount.currencyCode}
-                  </p>
-                </div>
-                <p class="mt-0.5 text-sm text-gray-500">
-                  Shipping and taxes calculated at checkout.
-                </p>
-                <div class="mt-6">
-                  <a
-                    href={$cart.checkoutUrl}
-                    class="flex items-center justify-center rounded-md border border-transparent bg-emerald-900 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-emerald-800"
-                    >Checkout</a
+              {#if $cart.lines?.nodes.length > 0}
+                <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+                  <div
+                    class="flex justify-between text-base font-medium text-gray-900"
                   >
-                </div>
-                <div
-                  class="mt-6 flex justify-center text-center text-sm text-gray-500"
-                >
-                  <p>
-                    or
-                    <a
-                      href="/"
-                      class="font-semibold text-emerald-900 hover:text-emerald-700"
-                    >
-                      Continue Shopping
-                      <span aria-hidden="true"> &rarr;</span>
-                    </a>
+                    <p>Subtotal</p>
+                    <p>
+                      {$cart.cost.totalAmount.amount}
+                      {$cart.cost.totalAmount.currencyCode}
+                    </p>
+                  </div>
+                  <p class="mt-0.5 text-sm text-gray-500">
+                    Shipping and taxes calculated at checkout.
                   </p>
+                  <div class="mt-6">
+                    <a
+                      href={$cart.checkoutUrl}
+                      class="flex items-center justify-center rounded-md border border-transparent bg-emerald-900 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-emerald-800"
+                      >Checkout</a
+                    >
+                  </div>
+                  <div
+                    class="mt-6 flex justify-center text-center text-sm text-gray-500"
+                  >
+                    <p>
+                      or
+                      <a
+                        href="/"
+                        class="font-semibold text-emerald-900 hover:text-emerald-700"
+                      >
+                        Continue Shopping
+                        <span aria-hidden="true"> &rarr;</span>
+                      </a>
+                    </p>
+                  </div>
                 </div>
-              </div>
+              {/if}
             </div>
           </div>
         </div>

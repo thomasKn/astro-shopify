@@ -19,13 +19,14 @@ const { products } = Astro.props as Props;
     >
       {
         products.map((product) => (
-          <a href={`/products/${product.handle}`} class="group">
-            <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-              <ShopifyImage
-                classList="h-full w-full object-cover object-center group-hover:opacity-75"
-                loading="eager"
-                image={product.featuredImage}
-                sizes={`
+          <>
+            <a href={`/products/${product.handle}`} class="group">
+              <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                <ShopifyImage
+                  classList="h-full w-full object-cover object-center group-hover:opacity-75"
+                  loading="eager"
+                  image={product.featuredImage}
+                  sizes={`
                   (min-width: 1540px) 348px,
                   (min-width: 1280px) 284px,
                   (min-width: 1040px) 309px,
@@ -33,13 +34,14 @@ const { products } = Astro.props as Props;
                   (min-width: 640px) 284px,
                   calc(100vw - 48px)
                 `}
-              />
-            </div>
-            <h3 class="mt-4 text-sm text-gray-700">{product.title}</h3>
-            <p class="mt-1 text-lg font-medium text-gray-900">
-              {product.variants.nodes[0].priceV2.amount}
-            </p>
-          </a>
+                />
+              </div>
+              <h3 class="mt-4 text-sm text-gray-700">{product.title}</h3>
+              <p class="mt-1 text-lg font-medium text-gray-900">
+                {product.variants.nodes[0].priceV2.amount}
+              </p>
+            </a>
+          </>
         ))
       }
     </div>

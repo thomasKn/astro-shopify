@@ -1,5 +1,10 @@
 <script lang="ts">
-  import { cart, isCartDrawerOpen } from "../stores/cart";
+  import { onMount } from "svelte";
+  import { initCart, cart, isCartDrawerOpen } from "../stores/cart";
+
+  onMount(() => {
+    initCart();
+  });
 
   function openCart() {
     isCartDrawerOpen.set(true);

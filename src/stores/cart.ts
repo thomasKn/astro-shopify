@@ -28,10 +28,11 @@ export const cart = persistentAtom<z.infer<typeof CartResult>>(
   }
 );
 
-// Fetch cart only at session start if it exists in local storage
-const sessionStarted = sessionStorage.getItem("sessionStarted");
-if (!sessionStarted) {
-  (async () => {
+// Fetch cart data if a cart exists in local storage, this is called during session start only
+// This is useful to validate if the cart still exists in Shopify and if it's not empty
+export async function initCart() {
+  const sessionStarted = sessionStorage.getItem("sessionStarted");
+  if (!sessionStarted) {
     const { id: cartId } = cart.get();
     if (cartId) {
       const res = await getCart(cartId);
@@ -46,7 +47,7 @@ if (!sessionStarted) {
         lines: res.lines,
       });
     }
-  })();
+  }
   sessionStorage.setItem("sessionStarted", "true");
 }
 

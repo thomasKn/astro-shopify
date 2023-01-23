@@ -24,7 +24,7 @@ const { title } = Astro.props as Props;
   </head>
   <body>
     <AnnouncementBar />
-    <CartDrawer client:only />
+    <CartDrawer client:idle />
     <Header />
     <main class="container">
       <slot />

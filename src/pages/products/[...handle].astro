@@ -142,7 +142,7 @@ setCache.short(Astro);
                 </p>
               </div>
 
-              <AddToCartForm class="mt-10" client:only>
+              <AddToCartForm class="mt-10" client:load>
                 <input type="hidden" name="id" value={firstVariant.id} />
                 <input type="hidden" name="quantity" value="1" />
                 <button type="submit" class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-emerald-900 py-3 px-8 text-base font-medium text-white hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">

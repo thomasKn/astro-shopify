@@ -1,0 +1,15 @@
+---
+import { getProducts } from "./../utils/shopify";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Products from "../components/Products.astro";
+import { setCache } from "../utils/cache";
+
+const title = "Astro + Shopify";
+const products = await getProducts();
+
+setCache.short(Astro);
+---
+
+<BaseLayout title={title}>
+  <Products products={products} />
+</BaseLayout>

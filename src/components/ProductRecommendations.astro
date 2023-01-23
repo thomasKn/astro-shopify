@@ -1,0 +1,61 @@
+---
+import { getProductRecommendations } from "../utils/shopify";
+import ShopifyImage from "./ShopifyImage.svelte";
+import Money from "./Money.svelte";
+export interface Props {
+  productId: string;
+}
+
+const { productId } = Astro.props as Props;
+const productRecommendations = await getProductRecommendations(productId);
+---
+
+{
+  productRecommendations.length > 0 && (
+    <section class="bg-white">
+      <div class="py-16 sm:py-24">
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">
+          Customers also purchased
+        </h2>
+
+        <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          {productRecommendations.map((product) => (
+            <div class="group relative">
+              <div class="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+                <ShopifyImage
+                  image={product.featuredImage}
+                  classList="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                  loading="lazy"
+                  sizes={`
+                    (min-width: 1540px) 348px,
+                    (min-width: 1280px) 284px,
+                    (min-width: 1040px) 226px,
+                    (min-width: 780px) 348px,
+                    (min-width: 640px) 284px,
+                    calc(100vw - 48px)
+                  `}
+                />
+              </div>
+              <div class="mt-4 flex justify-between">
+                <div>
+                  <h3 class="text-sm text-gray-700">
+                    <a href={`/products/${product.handle}`}>
+                      <span aria-hidden="true" class="absolute inset-0" />
+                      {product.title}
+                    </a>
+                  </h3>
+                  <p class="mt-1 text-sm text-gray-500">
+                    {product.variants.nodes[0].title}
+                  </p>
+                </div>
+                <p class="text-sm font-medium text-gray-900">
+                  <Money price={product.variants.nodes[0].priceV2} />
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

@@ -2,6 +2,7 @@
 import { z } from "zod";
 import { ProductResult } from "../utils/schemas";
 import ShopifyImage from "./ShopifyImage.svelte";
+import Money from "./Money.svelte";
 
 const ProductsResult = z.array(ProductResult);
 export interface Props {
@@ -38,7 +39,7 @@ const { products } = Astro.props as Props;
               </div>
               <h3 class="mt-4 text-sm text-gray-700">{product.title}</h3>
               <p class="mt-1 text-lg font-medium text-gray-900">
-                {product.variants.nodes[0].priceV2.amount}
+                <Money price={product.variants.nodes[0].priceV2} />
               </p>
             </a>
           </>

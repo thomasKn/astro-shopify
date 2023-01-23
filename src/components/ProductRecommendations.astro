@@ -1,6 +1,7 @@
 ---
 import { getProductRecommendations } from "../utils/shopify";
 import ShopifyImage from "./ShopifyImage.svelte";
+import Money from "./Money.svelte";
 export interface Props {
   productId: string;
 }
@@ -26,12 +27,12 @@ const productRecommendations = await getProductRecommendations(productId);
                   classList="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   loading="lazy"
                   sizes={`
-                    (min-width: 1540px) 360px,
-                    (min-width: 1280px) 296px,
-                    (min-width: 1040px) 232px,
-                    (min-width: 780px) 168px,
-                    (min-width: 680px) 136px,
-                    calc(23.61vw - 20px)
+                    (min-width: 1540px) 348px,
+                    (min-width: 1280px) 284px,
+                    (min-width: 1040px) 226px,
+                    (min-width: 780px) 348px,
+                    (min-width: 640px) 284px,
+                    calc(100vw - 48px)
                   `}
                 />
               </div>
@@ -48,7 +49,7 @@ const productRecommendations = await getProductRecommendations(productId);
                   </p>
                 </div>
                 <p class="text-sm font-medium text-gray-900">
-                  {product.variants.nodes[0].priceV2.amount}
+                  <Money price={product.variants.nodes[0].priceV2} />
                 </p>
               </div>
             </div>

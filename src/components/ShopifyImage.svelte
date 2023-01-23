@@ -31,7 +31,7 @@
 
 <img
   src={image.url}
-  alt={image.altText}
+  alt={image.altText || "Default alt text"}
   class={classList}
   width={image.width}
   height={image.height}

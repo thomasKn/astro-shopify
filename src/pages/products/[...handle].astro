@@ -1,10 +1,15 @@
 ---
-import { getProductByHandle } from "./../../utils/shopify.js";
+import { getProductByHandle } from "./../../utils/shopify";
 import { setCache } from "../../utils/cache";
+
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import AddToCartForm from "../../components/AddToCartForm.svelte";
-import ShopifyImage from "../../components/ShopifyImage.svelte";
+import ProductImageGallery from "../../components/ProductImageGallery.astro";
+import ProductBreadcrumb from "../../components/ProductBreadcrumb.astro";
+import ProductInformations from "../../components/ProductInformations.astro";
 import ProductRecommendations from "../../components/ProductRecommendations.astro";
+import TechnicalSpecs from "../../components/TechnicalSpecs.astro";
+
 const { handle } = Astro.params;
 
 const product = await getProductByHandle(handle || "");
@@ -22,233 +27,34 @@ setCache.short(Astro);
     <BaseLayout title="Product not found">Product not found</BaseLayout>
   ) : (
     <BaseLayout title={product.title}>
-      <div>
-        <div class="pt-6">
-          <nav aria-label="Breadcrumb">
-            <ol role="list" class="flex items-center space-x-2">
-              <li>
-                <div class="flex items-center">
-                  <a href="/" class="mr-2 text-sm font-medium text-gray-900 hover:text-gray-800">Home</a>
-                  <svg width="16" height="20" viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-5 w-4 text-gray-300">
-                    <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
-                  </svg>
-                </div>
-              </li>
+      <div class="pt-6">
+        <ProductBreadcrumb title={product.title} />
+      </div>
 
-              <li class="text-sm">
-                <div class="font-medium text-gray-500">{product.title}</div>
-              </li>
-            </ol>
-          </nav>
+      <section>
+        <div class="pb-16 pt-6 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:pb-24">
+          <div class="lg:col-span-2">
+            <ProductImageGallery images={product.images} />
+          </div>
 
-          <!-- Product info -->
-          <div class="pb-16 pt-6 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:pb-24">
+          <div class="mt-4 lg:row-span-3 lg:mt-0">
+            <ProductInformations
+              title={product.title}
+              price={firstVariant.priceV2}
+            />
 
-            <div class="lg:col-span-2">
-              <!-- Image gallery -->
-              <div class="lg:grid  lg:grid-cols-2 lg:gap-x-8">
-                <div class="aspect-w-3 aspect-h-4 overflow-hidden rounded-lg block">
-                  <ShopifyImage
-                    classList="h-full w-full object-cover object-center"
-                    loading="eager"
-                    image={product.images.nodes[0]}
-                    sizes={`
-                      (min-width: 1540px) 734px,
-                      (min-width: 1280px) 606px,
-                      (min-width: 1040px) 478px,
-                      (min-width: 780px) 350px,
-                      (min-width: 680px) 286px,
-                      calc(47.22vw - 26px)
-                    `}
-                  />
-                </div>
-                <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-                    { 
-                      product.images.nodes.map((image, index) => {
-                        if (index > 0 && index < 3) {
-                          return (
-                            <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-                              <ShopifyImage
-                                classList="h-full w-full object-cover object-center"
-                                loading="eager"
-                                image={image}
-                                sizes={`
-                                  (min-width: 1540px) 734px,
-                                  (min-width: 1280px) 606px,
-                                  (min-width: 1040px) 478px,
-                                  (min-width: 780px) 350px,
-                                  (min-width: 680px) 286px,
-                                  calc(47.22vw - 26px)
-                                `}
-                              />
-                            </div>
-                          )
-                        }
-                      })
-                    }
-                </div>
-              </div>
-            </div>
-
-            <!-- Options -->
-            <div class="mt-4 lg:row-span-3 lg:mt-0">
-              <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.title}</h1>
-              <h2 class="sr-only">Product information</h2>
-              <p class="text-3xl mt-6 tracking-tight text-gray-900">{firstVariant.priceV2.amount} {firstVariant.priceV2.currencyCode}</p>
-
-              <!-- Reviews -->
-              <div class="mt-6">
-                <h3 class="sr-only">Reviews</h3>
-                <div class="flex items-center">
-                  <div class="flex items-center">
-                    <!--
-                      Heroicon name: mini/star
-
-                      Active: "text-gray-900", Default: "text-gray-200"
-                    -->
-                    <svg class="text-gray-900 h-5 w-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-
-                    <!-- Heroicon name: mini/star -->
-                    <svg class="text-gray-900 h-5 w-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-
-                    <!-- Heroicon name: mini/star -->
-                    <svg class="text-gray-900 h-5 w-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-
-                    <!-- Heroicon name: mini/star -->
-                    <svg class="text-gray-900 h-5 w-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-
-                    <!-- Heroicon name: mini/star -->
-                    <svg class="text-gray-200 h-5 w-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
-                    </svg>
-                  </div>
-                  <p class="sr-only">4 out of 5 stars</p>
-                  <div class="ml-3 text-sm font-medium text-emerald-900">117 reviews</div>
-                </div>
-              </div>
-
-              <div class="mt-6">
-                <p class="text-base text-gray-900">
-                  This store is for demo purposes only. No orders will be fulfilled.
-                  Please visit the brand's <a class="text-emerald-900 underline" href="https://www.lateafternoons.ca" target="_blank" rel="noopener noreferer">website</a> to purchase this product.  
-                </p>
-              </div>
-
-              <AddToCartForm class="mt-10" client:load>
-                <input type="hidden" name="id" value={firstVariant.id} />
-                <input type="hidden" name="quantity" value="1" />
-                <button type="submit" class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-emerald-900 py-3 px-8 text-base font-medium text-white hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                  <!--
-                  Spinner, show/hide based on loading state.
-                  <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  -->
-                  Add to bag
-                  </button>
-              </AddToCartForm>
+            <div class="mt-10">
+              <AddToCartForm client:load variantId={firstVariant.id} />
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="bg-white">
-        <div class="grid grid-cols-1 items-center gap-y-16 gap-x-8 py-24 sm:py-32 lg:grid-cols-2">
-          <div>
-            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              Technical Specifications
-            </h2>
-            <p class="mt-4 text-gray-500">
-              The walnut wood card tray is precision milled to perfectly fit a
-              stack of Focus cards. The powder coated steel divider separates
-              active cards from new ones, or can be used to archive important
-              task lists.
-            </p>
+      <TechnicalSpecs images={product.images} />
 
-            <dl class="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
-              <div class="border-t border-gray-200 pt-4">
-                <dt class="font-medium text-gray-900">Origin</dt>
-                <dd class="mt-2 text-sm text-gray-500">
-                  Designed by Good Goods, Inc.
-                </dd>
-              </div>
-
-              <div class="border-t border-gray-200 pt-4">
-                <dt class="font-medium text-gray-900">Material</dt>
-                <dd class="mt-2 text-sm text-gray-500">
-                  Solid walnut base with rare earth magnets and powder coated
-                  steel card cover
-                </dd>
-              </div>
-
-              <div class="border-t border-gray-200 pt-4">
-                <dt class="font-medium text-gray-900">Dimensions</dt>
-                <dd class="mt-2 text-sm text-gray-500">
-                  6.25&quot; x 3.55&quot; x 1.15&quot;
-                </dd>
-              </div>
-
-              <div class="border-t border-gray-200 pt-4">
-                <dt class="font-medium text-gray-900">Finish</dt>
-                <dd class="mt-2 text-sm text-gray-500">
-                  Hand sanded and finished with natural oil
-                </dd>
-              </div>
-
-              <div class="border-t border-gray-200 pt-4">
-                <dt class="font-medium text-gray-900">Includes</dt>
-                <dd class="mt-2 text-sm text-gray-500">
-                  Wood card tray and 3 refill packs
-                </dd>
-              </div>
-
-              <div class="border-t border-gray-200 pt-4">
-                <dt class="font-medium text-gray-900">Considerations</dt>
-                <dd class="mt-2 text-sm text-gray-500">
-                  Made from natural materials. Grain and color vary with each
-                  item.
-                </dd>
-              </div>
-            </dl>
-          </div>
-          <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
-            { 
-              product.images.nodes.map((image, index) => {
-                if (index < 3) {
-                  return (
-                    <ShopifyImage
-                      classList="rounded-lg bg-gray-100"
-                      loading="lazy"
-                      image={image}
-                      sizes={`
-                        (min-width: 1540px) 734px,
-                        (min-width: 1280px) 606px,
-                        (min-width: 1040px) 478px,
-                        (min-width: 780px) 350px,
-                        (min-width: 680px) 286px,
-                        calc(47.22vw - 26px)
-                      `}
-                    />
-                  )
-                }
-              })
-            }
-          </div>
-        </div>
-      </div>
-
-      <div>
+      <section>
         <ProductRecommendations productId={product.id} />
-      </div>
+      </section>
     </BaseLayout>
   )
 }

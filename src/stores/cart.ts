@@ -12,6 +12,9 @@ import type { CartResult } from "../utils/schemas";
 // Cart drawer state (open or closed) with initial value (false) and no persistent state (local storage)
 export const isCartDrawerOpen = atom(false);
 
+// Cart is updating state (true or false) with initial value (false) and no persistent state (local storage)
+export const isCartUpdating = atom(false);
+
 // Cart store with persistent state (local storage) and initial value
 export const cart = persistentAtom<z.infer<typeof CartResult>>(
   "cart",
@@ -55,6 +58,8 @@ export async function initCart() {
 export async function addCartItem(item: { id: string; quantity: number }) {
   const { id: cartId } = cart.get();
 
+  isCartUpdating.set(true);
+
   if (!cartId) {
     const cartData = await createCart(item.id, item.quantity);
     cart.set({
@@ -65,6 +70,7 @@ export async function addCartItem(item: { id: string; quantity: number }) {
       totalQuantity: cartData.totalQuantity,
       lines: cartData.lines,
     });
+    isCartUpdating.set(false);
     isCartDrawerOpen.set(true);
   } else {
     const cartData = await addCartLines(cartId, item.id, item.quantity);
@@ -76,13 +82,17 @@ export async function addCartItem(item: { id: string; quantity: number }) {
       totalQuantity: cartData.totalQuantity,
       lines: cartData.lines,
     });
+    isCartUpdating.set(false);
     isCartDrawerOpen.set(true);
   }
 }
 
 export async function removeCartItems(lineIds: string[]) {
   const { id: cartId } = cart.get();
+  isCartUpdating.set(true);
+
   const cartData = await removeCartLines(cartId, lineIds);
+
   cart.set({
     ...cart.get(),
     id: cartData.id,
@@ -91,4 +101,5 @@ export async function removeCartItems(lineIds: string[]) {
     totalQuantity: cartData.totalQuantity,
     lines: cartData.lines,
   });
+  isCartUpdating.set(false);
 }

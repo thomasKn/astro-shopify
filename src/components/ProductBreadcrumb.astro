@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title: string;
+}
+const { title } = Astro.props as Props;
+---
+
+<nav aria-label="Breadcrumb">
+  <ol role="list" class="flex items-center space-x-2">
+    <li>
+      <div class="flex items-center">
+        <a
+          href="/"
+          class="mr-2 text-sm font-medium text-gray-900 hover:text-gray-800"
+          >Home</a
+        >
+        <svg
+          width="16"
+          height="20"
+          viewBox="0 0 16 20"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          class="h-5 w-4 text-gray-300"
+        >
+          <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z"></path>
+        </svg>
+      </div>
+    </li>
+
+    <li class="text-sm">
+      <div class="font-medium text-gray-500">{title}</div>
+    </li>
+  </ol>
+</nav>

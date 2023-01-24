@@ -64,7 +64,6 @@ export const getProductByHandle = async (handle: string) => {
   const data = await makeShopifyRequest(ProductByHandleQuery, { handle });
   const { productByHandle } = data;
 
-  // todo handle product not found
   const parsedProduct = ProductResult.parse(productByHandle);
 
   return parsedProduct;
@@ -106,6 +105,7 @@ export const addCartLines = async (
   });
   const { cartLinesAdd } = data;
   const { cart } = cartLinesAdd;
+
   const parsedCart = CartResult.parse(cart);
 
   return parsedCart;
@@ -127,6 +127,7 @@ export const removeCartLines = async (id: string, lineIds: string[]) => {
 // Get a cart by its ID and return the cart object
 export const getCart = async (id: string) => {
   const data = await makeShopifyRequest(GetCartQuery, { id });
+
   const { cart } = data;
   const parsedCart = CartResult.parse(cart);
 

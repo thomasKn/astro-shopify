@@ -1,0 +1,28 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+export interface Props {
+  title?: string;
+  message?: string;
+}
+
+Astro.response.status = 404;
+
+const defaultTitle = "Page not found";
+
+const { title = defaultTitle, message = defaultTitle } = Astro.props as Props;
+---
+
+<BaseLayout title={title}>
+  <div class="container grid justify-center py-44 text-center">
+    <span class="text-6xl font-bold text-emerald-900">404</span>
+    <h1 class="mt-4 text-xl">{message}</h1>
+    <a
+      href="/"
+      class="mt-6 font-semibold text-emerald-900 hover:text-emerald-700"
+    >
+      Go back home
+      <span aria-hidden="true"> &rarr;</span>
+    </a>
+  </div>
+</BaseLayout>

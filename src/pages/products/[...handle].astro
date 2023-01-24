@@ -3,6 +3,7 @@ import { getProductByHandle } from "./../../utils/shopify";
 import { setCache } from "../../utils/cache";
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import NotFoundLayout from "../../layouts/NotFoundLayout.astro";
 import AddToCartForm from "../../components/AddToCartForm.svelte";
 import ProductImageGallery from "../../components/ProductImageGallery.astro";
 import ProductBreadcrumb from "../../components/ProductBreadcrumb.astro";
@@ -24,37 +25,39 @@ setCache.short(Astro);
 
 {
   !product ? (
-    <BaseLayout title="Product not found">Product not found</BaseLayout>
+    <NotFoundLayout title="Product not found" message="Product not found" />
   ) : (
     <BaseLayout title={product.title}>
-      <div class="pt-6">
-        <ProductBreadcrumb title={product.title} />
-      </div>
+      <div class="container">
+        <div class="pt-6">
+          <ProductBreadcrumb title={product.title} />
+        </div>
 
-      <section>
-        <div class="pb-16 pt-6 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:pb-24">
-          <div class="lg:col-span-2">
-            <ProductImageGallery images={product.images} />
-          </div>
+        <section>
+          <div class="pb-16 pt-6 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:pb-24">
+            <div class="lg:col-span-2">
+              <ProductImageGallery images={product.images} />
+            </div>
 
-          <div class="mt-4 lg:row-span-3 lg:mt-0">
-            <ProductInformations
-              title={product.title}
-              price={firstVariant.priceV2}
-            />
+            <div class="mt-4 lg:row-span-3 lg:mt-0">
+              <ProductInformations
+                title={product.title}
+                price={firstVariant?.priceV2}
+              />
 
-            <div class="mt-10">
-              <AddToCartForm client:load variantId={firstVariant.id} />
+              <div class="mt-10">
+                <AddToCartForm client:load variantId={firstVariant?.id} />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <TechnicalSpecs images={product.images} />
+        <TechnicalSpecs images={product.images} />
 
-      <section>
-        <ProductRecommendations productId={product.id} />
-      </section>
+        <section>
+          <ProductRecommendations productId={product.id} />
+        </section>
+      </div>
     </BaseLayout>
   )
 }

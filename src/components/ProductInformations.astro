@@ -4,7 +4,7 @@ import type { MoneyV2Result } from "../utils/schemas";
 import Money from "./Money.svelte";
 
 export interface Props {
-  price: z.infer<typeof MoneyV2Result>;
+  price?: z.infer<typeof MoneyV2Result>;
   title: string;
 }
 const { price, title } = Astro.props as Props;
@@ -14,7 +14,7 @@ const { price, title } = Astro.props as Props;
   {title}
 </h1>
 <h2 class="sr-only">Product information</h2>
-<p class="text-3xl mt-6 tracking-tight text-gray-900">
+<p class="mt-6 text-3xl tracking-tight text-gray-900">
   <Money price={price} />
 </p>
 
@@ -29,7 +29,7 @@ const { price, title } = Astro.props as Props;
                       Active: "text-gray-900", Default: "text-gray-200"
                     -->
       <svg
-        class="text-gray-900 h-5 w-5 flex-shrink-0"
+        class="h-5 w-5 flex-shrink-0 text-gray-900"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
@@ -43,7 +43,7 @@ const { price, title } = Astro.props as Props;
 
       <!-- Heroicon name: mini/star -->
       <svg
-        class="text-gray-900 h-5 w-5 flex-shrink-0"
+        class="h-5 w-5 flex-shrink-0 text-gray-900"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
@@ -57,7 +57,7 @@ const { price, title } = Astro.props as Props;
 
       <!-- Heroicon name: mini/star -->
       <svg
-        class="text-gray-900 h-5 w-5 flex-shrink-0"
+        class="h-5 w-5 flex-shrink-0 text-gray-900"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
@@ -71,7 +71,7 @@ const { price, title } = Astro.props as Props;
 
       <!-- Heroicon name: mini/star -->
       <svg
-        class="text-gray-900 h-5 w-5 flex-shrink-0"
+        class="h-5 w-5 flex-shrink-0 text-gray-900"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
@@ -85,7 +85,7 @@ const { price, title } = Astro.props as Props;
 
       <!-- Heroicon name: mini/star -->
       <svg
-        class="text-gray-200 h-5 w-5 flex-shrink-0"
+        class="h-5 w-5 flex-shrink-0 text-gray-200"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"

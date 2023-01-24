@@ -12,7 +12,7 @@ const { products } = Astro.props as Props;
 ---
 
 <section>
-  <div class="py-16 sm:py-20">
+  <div class="container py-16 sm:py-20">
     <h2 class="sr-only">Products</h2>
 
     <div
@@ -21,12 +21,12 @@ const { products } = Astro.props as Props;
       {
         products.map((product) => (
           <>
-            <a href={`/products/${product.handle}`} class="group">
-              <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+            <a href={`/products/${product?.handle}`} class="group">
+              <div class="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8 w-full overflow-hidden rounded-lg bg-gray-200">
                 <ShopifyImage
                   classList="h-full w-full object-cover object-center group-hover:opacity-75"
                   loading="eager"
-                  image={product.featuredImage}
+                  image={product?.featuredImage}
                   sizes={`
                   (min-width: 1540px) 348px,
                   (min-width: 1280px) 284px,
@@ -37,9 +37,9 @@ const { products } = Astro.props as Props;
                 `}
                 />
               </div>
-              <h3 class="mt-4 text-sm text-gray-700">{product.title}</h3>
+              <h3 class="mt-4 text-sm text-gray-700">{product?.title}</h3>
               <p class="mt-1 text-lg font-medium text-gray-900">
-                <Money price={product.variants.nodes[0].priceV2} />
+                <Money price={product?.variants.nodes[0].priceV2} />
               </p>
             </a>
           </>

@@ -10,6 +10,7 @@ specifiers:
   nanostores: ^0.7.1
   prettier: ^2.8.3
   prettier-plugin-astro: ^0.7.2
+  prettier-plugin-tailwindcss: ^0.2.1
   svelte: ^3.55.1
   tailwindcss: ^3.2.4
   zod: ^3.20.2
@@ -28,6 +29,7 @@ dependencies:
 devDependencies:
   prettier: 2.8.3
   prettier-plugin-astro: 0.7.2
+  prettier-plugin-tailwindcss: 0.2.1_prettier@2.8.3
   tailwindcss: 3.2.4
 
 packages:
@@ -3154,6 +3156,15 @@ packages:
       prettier: 2.8.3
       sass-formatter: 0.7.5
       synckit: 0.8.4
+
+  /prettier-plugin-tailwindcss/0.2.1_prettier@2.8.3:
+    resolution: {integrity: sha512-aIO8IguumORyRsmT+E7JfJ3A9FEoyhqZR7Au7TBOege3VZkgMvHJMkufeYp4zjnDK2iq4ktkvGMNOQR9T8lisQ==}
+    engines: {node: '>=12.17.0'}
+    peerDependencies:
+      prettier: '>=2.2.0'
+    dependencies:
+      prettier: 2.8.3
+    dev: true
 
   /prettier/2.8.3:
     resolution: {integrity: sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==}

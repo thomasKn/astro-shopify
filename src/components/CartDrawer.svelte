@@ -130,7 +130,7 @@
 
                 <div class="mt-8">
                   <div class="flow-root">
-                    {#if $cart.lines?.nodes.length > 0}
+                    {#if $cart && $cart.lines?.nodes.length > 0}
                       <!-- svelte-ignore a11y-no-redundant-roles -->
                       <ul
                         role="list"
@@ -162,9 +162,7 @@
                                     </h3>
                                   </a>
                                   <p class="ml-4">
-                                    <Money
-                                      price={item.estimatedCost.totalAmount}
-                                    />
+                                    <Money price={item.cost.totalAmount} />
                                   </p>
                                 </div>
                                 <p class="mt-1 text-sm text-gray-500">
@@ -207,7 +205,7 @@
                 </div>
               </div>
 
-              {#if $cart.lines?.nodes.length > 0}
+              {#if $cart && $cart.lines?.nodes.length > 0}
                 <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
                   <div
                     class="flex justify-between text-base font-medium text-gray-900"

@@ -28,7 +28,15 @@ fragment cartFragment on Cart {
           }
         }
       }
-      estimatedCost {
+      cost {
+        amountPerQuantity{
+          amount
+          currencyCode
+        }
+        subtotalAmount {
+          amount
+          currencyCode
+        }
         totalAmount {
           amount
           currencyCode

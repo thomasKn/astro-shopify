@@ -5,13 +5,11 @@
   export let price: z.infer<typeof MoneyV2Result>;
   export let showCurrency: boolean = false;
 
-  const amount = parseInt(price.amount);
-
-  const formatPrice = new Intl.NumberFormat("en-US", {
+  $: formatPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: price.currencyCode,
     currencyDisplay: showCurrency ? "symbol" : "narrowSymbol",
-  }).format(amount);
+  }).format(parseInt(price.amount));
 </script>
 
 <span>

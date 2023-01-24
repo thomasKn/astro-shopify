@@ -82,7 +82,6 @@ export const getProductRecommendations = async (productId: string) => {
 };
 
 // Create a cart and add a line item to it and return the cart object
-// todo handle OOS line items when adding to cart
 export const createCart = async (id: string, quantity: number) => {
   const data = await makeShopifyRequest(CreateCartMutation, { id, quantity });
   const { cartCreate } = data;

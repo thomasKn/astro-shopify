@@ -46,7 +46,12 @@ setCache.short(Astro);
               />
 
               <div class="mt-10">
-                <AddToCartForm client:load variantId={firstVariant?.id} />
+                <AddToCartForm
+                  client:load
+                  variantId={firstVariant?.id}
+                  variantQuantityAvailable={firstVariant?.quantityAvailable}
+                  variantAvailableForSale={firstVariant?.availableForSale}
+                />
               </div>
             </div>
           </div>

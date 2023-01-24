@@ -26,6 +26,7 @@ export const CartItemResult = z.object({
     totalAmount: MoneyV2Result,
   }),
   merchandise: z.object({
+    id: z.string(),
     title: z.string(),
     product: z.object({
       title: z.string(),
@@ -54,6 +55,7 @@ export const VariantResult = z.object({
   id: z.string(),
   title: z.string(),
   availableForSale: z.boolean(),
+  quantityAvailable: z.number().int(),
   priceV2: MoneyV2Result,
 });
 

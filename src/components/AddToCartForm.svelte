@@ -1,7 +1,16 @@
 <script lang="ts">
-  import { addCartItem, isCartUpdating } from "../stores/cart";
+  import { addCartItem, isCartUpdating, cart } from "../stores/cart";
 
   export let variantId: string;
+  export let variantQuantityAvailable: number;
+  export let variantAvailableForSale: boolean;
+
+  // Check if the variant is already in the cart and if there are any units left
+  $: variantInCart =
+    $cart &&
+    $cart.lines?.nodes.filter((item) => item.merchandise.id === variantId)[0];
+  $: noQuantityLeft =
+    variantInCart && variantQuantityAvailable <= variantInCart?.quantity;
 
   function addToCart(e: Event) {
     const form = e.target as HTMLFormElement;
@@ -18,7 +27,12 @@
 <form on:submit|preventDefault={(e) => addToCart(e)}>
   <input type="hidden" name="id" value={variantId} />
   <input type="hidden" name="quantity" value="1" />
-  <button type="submit" class="button mt-10 w-full" disabled={$isCartUpdating}>
+
+  <button
+    type="submit"
+    class="button mt-10 w-full"
+    disabled={$isCartUpdating || noQuantityLeft || !variantAvailableForSale}
+  >
     {#if $isCartUpdating}
       <svg
         class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
@@ -41,6 +55,15 @@
         />
       </svg>
     {/if}
-    Add to bag
+    {#if variantAvailableForSale}
+      Add to bag
+    {:else}
+      Sold out
+    {/if}
   </button>
+  {#if noQuantityLeft}
+    <div class="text-center text-red-600">
+      <small>All units left are in your cart</small>
+    </div>
+  {/if}
 </form>

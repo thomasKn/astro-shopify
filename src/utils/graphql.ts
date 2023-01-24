@@ -15,6 +15,7 @@ fragment cartFragment on Cart {
       quantity
       merchandise {
         ...on ProductVariant {
+          id
           title
           image {
             url
@@ -65,6 +66,7 @@ fragment productFragment on Product {
       id
       title
       availableForSale
+      quantityAvailable
       priceV2 {
         amount
         currencyCode

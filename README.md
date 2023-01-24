@@ -16,7 +16,7 @@ Tailwind UI free components are used for the design.
 - Create a new app. https://\<yourshopname>.myshopify.com/admin/settings/apps
 - Once your app has been created, select use it. Then select "Storefront API integration" link
 - Next, check Storefront API access scopes
-  - `unauthenticated_read_product_listings` access should be fine to get you started.
+  - `unauthenticated_read_product_listings` and `unauthenticated_read_product_inventory` access should be fine to get you started.
   - Add more scopes if you require additional permissions.
 
 ### Shopify Troubleshooting

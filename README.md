@@ -3,6 +3,8 @@
 The theme is built with Svelte but you can use any framework you like (React, Vue, Solid etc.) thanks to Astro.
 Tailwind UI free components are used for the design.
 
+![astro_shopify_preview](https://user-images.githubusercontent.com/10447155/214480671-8380f410-cbfb-4f53-a6bb-5c744073e2f2.jpg)
+
 ## 🧑‍🚀 Where to start
 
 1. Create a `.env` file based on `.env.example` with your Shopify store url and public token

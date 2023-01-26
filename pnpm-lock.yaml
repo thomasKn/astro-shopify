@@ -6,22 +6,22 @@ specifiers:
   '@astrojs/vercel': ^3.0.0
   '@nanostores/persistent': ^0.7.0
   '@tailwindcss/aspect-ratio': ^0.4.2
-  astro: ^2.0.0
+  astro: ^2.0.1
   nanostores: ^0.7.1
   prettier: ^2.8.3
   prettier-plugin-astro: ^0.7.2
-  prettier-plugin-tailwindcss: ^0.2.1
+  prettier-plugin-tailwindcss: ^0.2.2
   svelte: ^3.55.1
   tailwindcss: ^3.2.4
   zod: ^3.20.2
 
 dependencies:
-  '@astrojs/svelte': 2.0.0_astro@2.0.0+svelte@3.55.1
-  '@astrojs/tailwind': 3.0.0_ybg5bdd5h3rg6corkitjxxqs2q
-  '@astrojs/vercel': 3.0.0_astro@2.0.0
+  '@astrojs/svelte': 2.0.0_astro@2.0.1+svelte@3.55.1
+  '@astrojs/tailwind': 3.0.0_bgk6wvini4j5nfa7w2itosrqne
+  '@astrojs/vercel': 3.0.0_astro@2.0.1
   '@nanostores/persistent': 0.7.0_nanostores@0.7.1
   '@tailwindcss/aspect-ratio': 0.4.2_tailwindcss@3.2.4
-  astro: 2.0.0
+  astro: 2.0.1
   nanostores: 0.7.1
   svelte: 3.55.1
   zod: 3.20.2
@@ -29,7 +29,7 @@ dependencies:
 devDependencies:
   prettier: 2.8.3
   prettier-plugin-astro: 0.7.2
-  prettier-plugin-tailwindcss: 0.2.1_prettier@2.8.3
+  prettier-plugin-tailwindcss: 0.2.2_dz7tw5xvmurghik32njsgkfs6a
   tailwindcss: 3.2.4
 
 packages:
@@ -58,7 +58,7 @@ packages:
       prettier: 2.8.3
       prettier-plugin-astro: 0.7.2
       source-map: 0.7.4
-      vscode-css-languageservice: 6.2.2
+      vscode-css-languageservice: 6.2.3
       vscode-html-languageservice: 5.0.4
       vscode-languageserver: 8.0.2
       vscode-languageserver-protocol: 3.17.2
@@ -67,13 +67,13 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdown-remark/2.0.0_astro@2.0.0:
+  /@astrojs/markdown-remark/2.0.0_astro@2.0.1:
     resolution: {integrity: sha512-PqDxi3L2jsxLWjsWRyn+BkaDtHKq2+ECI7PlW9NsEwu2jKKgl7sXj57s/Wjhyctr4efFdzewFArVFm1Gnb3rtw==}
     peerDependencies:
       astro: ^2.0.0
     dependencies:
       '@astrojs/prism': 2.0.0
-      astro: 2.0.0
+      astro: 2.0.1
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.1
       rehype-raw: 6.1.1
@@ -97,7 +97,7 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/svelte/2.0.0_astro@2.0.0+svelte@3.55.1:
+  /@astrojs/svelte/2.0.0_astro@2.0.1+svelte@3.55.1:
     resolution: {integrity: sha512-UPD/Z+N5DhaE8FykvOr9JU0rJnGYlvNOR4MjezvUSniztEXPsm881xPbWVshvAlhPcRPLV7GUkacDRfnGqfQ9g==}
     engines: {node: '>=16.12.0'}
     peerDependencies:
@@ -105,7 +105,7 @@ packages:
       svelte: ^3.54.0
     dependencies:
       '@sveltejs/vite-plugin-svelte': 2.0.2_svelte@3.55.1
-      astro: 2.0.0
+      astro: 2.0.1
       svelte: 3.55.1
       svelte2tsx: 0.5.23_svelte@3.55.1
     transitivePeerDependencies:
@@ -114,14 +114,14 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind/3.0.0_ybg5bdd5h3rg6corkitjxxqs2q:
+  /@astrojs/tailwind/3.0.0_bgk6wvini4j5nfa7w2itosrqne:
     resolution: {integrity: sha512-Ul0LzTIW+QD/qXUaTDSDoe/uNOPSAX6Ce7yTMzl7v+9OlZ4vlgkj1CUq/WkhlKnJ2+SnJvLArEj6yYs/M2V8nA==}
     peerDependencies:
       astro: ^2.0.0
       tailwindcss: ^3.0.24
     dependencies:
       '@proload/core': 0.3.3
-      astro: 2.0.0
+      astro: 2.0.1
       autoprefixer: 10.4.13_postcss@8.4.21
       postcss: 8.4.21
       postcss-load-config: 4.0.1_postcss@8.4.21
@@ -146,14 +146,14 @@ packages:
       - supports-color
     dev: false
 
-  /@astrojs/vercel/3.0.0_astro@2.0.0:
+  /@astrojs/vercel/3.0.0_astro@2.0.1:
     resolution: {integrity: sha512-fzoa8C0AbiLNkAkTZV4wIEdqaE/U99x0mFSHgA3SV2OwWszch29l8pQMnLUHXTXVy1OwmNba4QRm1B8hkPwo9g==}
     peerDependencies:
       astro: ^2.0.0
     dependencies:
       '@astrojs/webapi': 2.0.0
       '@vercel/nft': 0.22.6
-      astro: 2.0.0
+      astro: 2.0.1
       fast-glob: 3.2.12
       set-cookie-parser: 2.5.1
     transitivePeerDependencies:
@@ -968,14 +968,14 @@ packages:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
     dev: false
 
-  /astro/2.0.0:
-    resolution: {integrity: sha512-4ihZinpZXAgHbLPIPLsrXedZ//geJ5EvnzVk4DMrcUvk9ehcgSwyo2sJtG4QtmnHC92Zkmb8IiScJfczEm7ceA==}
+  /astro/2.0.1:
+    resolution: {integrity: sha512-EXq1lks+ylmArhtUs99PQelK0bQ3VS+698OO9UYkjG08Bd02ficqihsRGBnhEor7U9989hZb+1p4y0rNpgKH8g==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 1.0.1
       '@astrojs/language-server': 0.28.3
-      '@astrojs/markdown-remark': 2.0.0_astro@2.0.0
+      '@astrojs/markdown-remark': 2.0.0_astro@2.0.1
       '@astrojs/telemetry': 2.0.0
       '@astrojs/webapi': 2.0.0
       '@babel/core': 7.20.12
@@ -1047,7 +1047,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.4
-      caniuse-lite: 1.0.30001447
+      caniuse-lite: 1.0.30001448
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -1117,7 +1117,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001447
+      caniuse-lite: 1.0.30001448
       electron-to-chromium: 1.4.284
       node-releases: 2.0.8
       update-browserslist-db: 1.0.10_browserslist@4.21.4
@@ -1146,8 +1146,8 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /caniuse-lite/1.0.30001447:
-    resolution: {integrity: sha512-bdKU1BQDPeEXe9A39xJnGtY0uRq/z5osrnXUw0TcK+EYno45Y+U7QU9HhHEyzvMDffpYadFXi3idnSNkcwLkTw==}
+  /caniuse-lite/1.0.30001448:
+    resolution: {integrity: sha512-tq2YI+MJnooG96XpbTRYkBxLxklZPOdLmNIOdIhvf7SNJan6u5vCKum8iT7ZfCt70m1GPkuC7P3TtX6UuhupuA==}
     dev: false
 
   /ccount/2.0.1:
@@ -2027,7 +2027,7 @@ packages:
       '@types/mdast': 3.0.10
       '@types/unist': 2.0.6
       decode-named-character-reference: 1.0.2
-      mdast-util-to-string: 3.1.0
+      mdast-util-to-string: 3.1.1
       micromark: 3.1.0
       micromark-util-decode-numeric-character-reference: 1.0.0
       micromark-util-decode-string: 1.0.2
@@ -2096,8 +2096,8 @@ packages:
       - supports-color
     dev: false
 
-  /mdast-util-phrasing/3.0.0:
-    resolution: {integrity: sha512-S+QYsDRLkGi8U7o5JF1agKa/sdP+CNGXXLqC17pdTVL8FHHgQEiwFGa9yE5aYtUxNiFGYoaDy9V1kC85Sz86Gg==}
+  /mdast-util-phrasing/3.0.1:
+    resolution: {integrity: sha512-WmI1gTXUBJo4/ZmSk79Wcb2HcjPJBzM1nlI/OUWA8yk2X9ik3ffNbBGsU+09BFmXaL1IBb9fiuvq6/KMiNycSg==}
     dependencies:
       '@types/mdast': 3.0.10
       unist-util-is: 5.2.0
@@ -2123,15 +2123,17 @@ packages:
       '@types/mdast': 3.0.10
       '@types/unist': 2.0.6
       longest-streak: 3.1.0
-      mdast-util-phrasing: 3.0.0
-      mdast-util-to-string: 3.1.0
+      mdast-util-phrasing: 3.0.1
+      mdast-util-to-string: 3.1.1
       micromark-util-decode-string: 1.0.2
       unist-util-visit: 4.1.2
       zwitch: 2.0.4
     dev: false
 
-  /mdast-util-to-string/3.1.0:
-    resolution: {integrity: sha512-n4Vypz/DZgwo0iMHLQL49dJzlp7YtAJP+N07MZHpjPf/5XJuHUWstviF4Mn2jEiR/GNmtnRRqnwsXExk3igfFA==}
+  /mdast-util-to-string/3.1.1:
+    resolution: {integrity: sha512-tGvhT94e+cVnQt8JWE9/b3cUQZWS732TJxXHktvP+BYo62PpYD53Ls/6cC60rW21dW+txxiM4zMdc6abASvZKA==}
+    dependencies:
+      '@types/mdast': 3.0.10
     dev: false
 
   /merge-stream/2.0.0:
@@ -2789,13 +2791,57 @@ packages:
       sass-formatter: 0.7.5
       synckit: 0.8.4
 
-  /prettier-plugin-tailwindcss/0.2.1_prettier@2.8.3:
-    resolution: {integrity: sha512-aIO8IguumORyRsmT+E7JfJ3A9FEoyhqZR7Au7TBOege3VZkgMvHJMkufeYp4zjnDK2iq4ktkvGMNOQR9T8lisQ==}
+  /prettier-plugin-tailwindcss/0.2.2_dz7tw5xvmurghik32njsgkfs6a:
+    resolution: {integrity: sha512-5RjUbWRe305pUpc48MosoIp6uxZvZxrM6GyOgsbGLTce+ehePKNm7ziW2dLG2air9aXbGuXlHVSQQw4Lbosq3w==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
+      '@prettier/plugin-php': '*'
+      '@prettier/plugin-pug': '*'
+      '@shopify/prettier-plugin-liquid': '*'
+      '@shufo/prettier-plugin-blade': '*'
+      '@trivago/prettier-plugin-sort-imports': '*'
       prettier: '>=2.2.0'
+      prettier-plugin-astro: '*'
+      prettier-plugin-css-order: '*'
+      prettier-plugin-import-sort: '*'
+      prettier-plugin-jsdoc: '*'
+      prettier-plugin-organize-attributes: '*'
+      prettier-plugin-organize-imports: '*'
+      prettier-plugin-style-order: '*'
+      prettier-plugin-svelte: '*'
+      prettier-plugin-twig-melody: '*'
+    peerDependenciesMeta:
+      '@prettier/plugin-php':
+        optional: true
+      '@prettier/plugin-pug':
+        optional: true
+      '@shopify/prettier-plugin-liquid':
+        optional: true
+      '@shufo/prettier-plugin-blade':
+        optional: true
+      '@trivago/prettier-plugin-sort-imports':
+        optional: true
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-css-order:
+        optional: true
+      prettier-plugin-import-sort:
+        optional: true
+      prettier-plugin-jsdoc:
+        optional: true
+      prettier-plugin-organize-attributes:
+        optional: true
+      prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-style-order:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
+      prettier-plugin-twig-melody:
+        optional: true
     dependencies:
       prettier: 2.8.3
+      prettier-plugin-astro: 0.7.2
     dev: true
 
   /prettier/2.8.3:
@@ -3511,8 +3557,8 @@ packages:
       vite: 4.0.4
     dev: false
 
-  /vscode-css-languageservice/6.2.2:
-    resolution: {integrity: sha512-K3Bl/cYGNlH4MgVtBIYJr9Qj0g3BVMUtioOCc5PJFSlgLPVHpWV5RY5jSDH3hYlldWjokIkXMk1ABMY4bimG7g==}
+  /vscode-css-languageservice/6.2.3:
+    resolution: {integrity: sha512-EAyhyIVHpEaf+GjtI+tVe7SekdoANfG0aubnspsQwak3Qkimn/97FpAufNyXk636ngW05pjNKAR9zyTCzo6avQ==}
     dependencies:
       '@vscode/l10n': 0.0.11
       vscode-languageserver-textdocument: 1.0.8

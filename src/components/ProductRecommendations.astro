@@ -4,10 +4,15 @@ import ShopifyImage from "./ShopifyImage.svelte";
 import Money from "./Money.svelte";
 export interface Props {
   productId: string;
+  buyerIP: string;
 }
 
-const { productId } = Astro.props as Props;
-const productRecommendations = await getProductRecommendations(productId);
+const { productId, buyerIP } = Astro.props as Props;
+
+const productRecommendations = await getProductRecommendations({
+  productId,
+  buyerIP,
+});
 ---
 
 {

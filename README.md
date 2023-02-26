@@ -7,7 +7,7 @@ Tailwind UI free components are used for the design.
 
 ## 🧑‍🚀 Where to start
 
-1. Create a `.env` file based on `.env.example` with your Shopify store url and public token
+1. Create a `.env` file based on `.env.example` with your Shopify store url and your public and private access tokens
 2. The credentials are used inside the `/utils/config.ts` file, you can update the API version there
 3. Run `npm install` or `yarn` or `pnpm install`
 4. Run `npm run dev` or `yarn run dev` or `pnpm run dev`
@@ -15,8 +15,9 @@ Tailwind UI free components are used for the design.
 ## Shopify Configuration Guide
 
 - Create a new account or use an existing one. https://accounts.shopify.com/store-login
-- Create a new app. https://\<yourshopname>.myshopify.com/admin/settings/apps
-- Once your app has been created, select use it. Then select "Storefront API integration" link
+- Add the [Shopify Headless channel](https://apps.shopify.com/headless) to your store
+- Click on `Add Storefront`
+- Copy/Paste your `public` and `private` access tokens to your .env file
 - Next, check Storefront API access scopes
   - `unauthenticated_read_product_listings` and `unauthenticated_read_product_inventory` access should be fine to get you started.
   - Add more scopes if you require additional permissions.

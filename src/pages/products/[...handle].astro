@@ -12,8 +12,8 @@ import ProductRecommendations from "../../components/ProductRecommendations.astr
 import TechnicalSpecs from "../../components/TechnicalSpecs.astro";
 
 const { handle } = Astro.params;
-
-const product = await getProductByHandle(handle || "");
+const ip = Astro.clientAddress;
+const product = await getProductByHandle({ handle: handle || "", buyerIP: ip });
 
 if (!product) {
   Astro.response.status = 404;
@@ -60,7 +60,7 @@ setCache.short(Astro);
         <TechnicalSpecs images={product.images} />
 
         <section>
-          <ProductRecommendations productId={product.id} />
+          <ProductRecommendations productId={product.id} buyerIP={ip} />
         </section>
       </div>
     </BaseLayout>

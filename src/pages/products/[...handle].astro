@@ -12,7 +12,8 @@ import ProductRecommendations from "../../components/ProductRecommendations.astr
 import TechnicalSpecs from "../../components/TechnicalSpecs.astro";
 
 const { handle } = Astro.params;
-const ip = Astro.clientAddress;
+const headers = Astro.request.headers;
+const ip = headers.get("x-vercel-forwarded-for") || Astro.clientAddress;
 const product = await getProductByHandle({ handle: handle || "", buyerIP: ip });
 
 if (!product) {

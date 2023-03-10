@@ -33,7 +33,7 @@ export const CartItemResult = z.object({
       title: z.string(),
       handle: z.string(),
     }),
-    image: ImageResult,
+    image: ImageResult.nullable(),
   }),
   quantity: z.number().positive().int(),
 });
@@ -71,6 +71,6 @@ export const ProductResult = z
     variants: z.object({
       nodes: z.array(VariantResult),
     }),
-    featuredImage: ImageResult,
+    featuredImage: ImageResult.nullable(),
   })
   .nullable();

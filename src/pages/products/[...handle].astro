@@ -9,7 +9,8 @@ import ProductImageGallery from "../../components/ProductImageGallery.astro";
 import ProductBreadcrumb from "../../components/ProductBreadcrumb.astro";
 import ProductInformations from "../../components/ProductInformations.astro";
 import ProductRecommendations from "../../components/ProductRecommendations.astro";
-import TechnicalSpecs from "../../components/TechnicalSpecs.astro";
+import ProductReviews from "../../components/ProductReviews.astro";
+import ProductAccordions from "../../components/ProductAccordions.astro";
 
 const { handle } = Astro.params;
 const headers = Astro.request.headers;
@@ -29,41 +30,45 @@ setCache.short(Astro);
     <NotFoundLayout title="Product not found" message="Product not found" />
   ) : (
     <BaseLayout title={product.title}>
-      <div class="container">
-        <div class="pt-6">
-          <ProductBreadcrumb title={product.title} />
-        </div>
+      <div class="container pt-6">
+        <ProductBreadcrumb title={product.title} />
+      </div>
 
-        <section>
-          <div class="pb-16 pt-6 lg:grid lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:pb-24">
-            <div class="lg:col-span-2">
-              <ProductImageGallery images={product.images} />
+      <section class="container">
+        <div class="pb-16 pt-6 lg:grid lg:grid-cols-12 lg:gap-20">
+          <div class="lg:col-span-7">
+            <ProductImageGallery images={product.images} />
+          </div>
+
+          <div class="mt-8 lg:col-span-5 lg:mt-0">
+            <ProductInformations
+              title={product.title}
+              price={firstVariant?.priceV2}
+            />
+
+            <div>
+              <AddToCartForm
+                client:load
+                variantId={firstVariant?.id}
+                variantQuantityAvailable={firstVariant?.quantityAvailable}
+                variantAvailableForSale={firstVariant?.availableForSale}
+              />
             </div>
 
-            <div class="mt-4 lg:row-span-3 lg:mt-0">
-              <ProductInformations
-                title={product.title}
-                price={firstVariant?.priceV2}
-              />
-
-              <div class="mt-10">
-                <AddToCartForm
-                  client:load
-                  variantId={firstVariant?.id}
-                  variantQuantityAvailable={firstVariant?.quantityAvailable}
-                  variantAvailableForSale={firstVariant?.availableForSale}
-                />
-              </div>
+            <div class="mt-8">
+              <ProductAccordions />
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <TechnicalSpecs images={product.images} />
+      <section class="container">
+        <ProductReviews />
+      </section>
 
-        <section>
-          <ProductRecommendations productId={product.id} buyerIP={ip} />
-        </section>
-      </div>
+      <section class="container">
+        <ProductRecommendations productId={product.id} buyerIP={ip} />
+      </section>
     </BaseLayout>
   )
 }

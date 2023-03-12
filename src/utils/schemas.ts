@@ -12,12 +12,14 @@ export const MoneyV2Result = z.object({
   currencyCode: z.string(),
 });
 
-export const ImageResult = z.object({
-  altText: z.string().nullable().optional(),
-  url: z.string(),
-  width: z.number().positive().int(),
-  height: z.number().positive().int(),
-});
+export const ImageResult = z
+  .object({
+    altText: z.string().nullable().optional(),
+    url: z.string(),
+    width: z.number().positive().int(),
+    height: z.number().positive().int(),
+  })
+  .nullable();
 
 export const CartItemResult = z.object({
   id: z.string(),

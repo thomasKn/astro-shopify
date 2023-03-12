@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
     @apply flex min-h-screen flex-col;
   }
@@ -11,10 +15,19 @@
     @apply flex-1;
   }
 
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
   .button {
-    @apply flex items-center justify-center rounded-md border border-transparent;
-    @apply bg-emerald-900 py-3 px-8 text-base font-medium text-white;
-    @apply hover:bg-emerald-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+    @apply flex items-center justify-center rounded-lg;
+    @apply bg-gradient-to-br from-emerald-900 via-emerald-800  to-emerald-600;
+    @apply py-3 px-8 text-base font-medium text-white;
+    @apply transition hover:opacity-80;
+    @apply focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1;
     @apply disabled:cursor-not-allowed disabled:opacity-60;
   }
 }

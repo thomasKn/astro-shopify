@@ -76,7 +76,7 @@ packages:
       astro: 2.1.2
       github-slugger: 1.5.0
       image-size: 1.0.2
-      import-meta-resolve: 2.2.1
+      import-meta-resolve: 2.2.2
       rehype-raw: 6.1.1
       rehype-stringify: 9.0.3
       remark-gfm: 3.0.1
@@ -963,7 +963,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       delegates: 1.0.0
-      readable-stream: 3.6.1
+      readable-stream: 3.6.2
     dev: false
 
   /arg/5.0.2:
@@ -1100,7 +1100,7 @@ packages:
     dependencies:
       buffer: 6.0.3
       inherits: 2.0.4
-      readable-stream: 3.6.1
+      readable-stream: 3.6.2
     dev: false
 
   /boxen/6.2.1:
@@ -1136,7 +1136,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001464
-      electron-to-chromium: 1.4.327
+      electron-to-chromium: 1.4.328
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: false
@@ -1407,8 +1407,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: false
 
-  /electron-to-chromium/1.4.327:
-    resolution: {integrity: sha512-DIk2H4g/3ZhjgiABJjVdQvUdMlSABOsjeCm6gmUzIdKxAuFrGiJ8QXMm3i09grZdDBMC/d8MELMrdwYRC0+YHg==}
+  /electron-to-chromium/1.4.328:
+    resolution: {integrity: sha512-DE9tTy2PNmy1v55AZAO542ui+MLC2cvINMK4P2LXGsJdput/ThVG9t+QGecPuAZZSgC8XoI+Jh9M1OG9IoNSCw==}
     dev: false
 
   /emmet/2.3.6:
@@ -1812,8 +1812,8 @@ packages:
       queue: 6.0.2
     dev: false
 
-  /import-meta-resolve/2.2.1:
-    resolution: {integrity: sha512-C6lLL7EJPY44kBvA80gq4uMsVFw5x3oSKfuMl1cuZ2RkI5+UJqQXgn+6hlUew0y4ig7Ypt4CObAAIzU53Nfpuw==}
+  /import-meta-resolve/2.2.2:
+    resolution: {integrity: sha512-f8KcQ1D80V7RnqVm+/lirO9zkOxjGxhaTC1IPrBGd3MEfNgmNG67tSUO9gTi2F3Blr2Az6g1vocaxzkVnWl9MA==}
     dev: false
 
   /inflight/1.0.6:
@@ -2465,8 +2465,8 @@ packages:
       yallist: 4.0.0
     dev: false
 
-  /minipass/4.2.4:
-    resolution: {integrity: sha512-lwycX3cBMTvcejsHITUgYj6Gy6A7Nh4Q6h9NP4sTHY1ccJlC7yKzDmiShEHsJ16Jf1nKGDEaiHxiltsJEvk0nQ==}
+  /minipass/4.2.5:
+    resolution: {integrity: sha512-+yQl7SX3bIT83Lhb4BVorMAHVuqsskxRdlmO9kTpyukp8vsm2Sn/fUOV9xlnG8/a5JsypJzap21lz/y3FBMJ8Q==}
     engines: {node: '>=8'}
     dev: false
 
@@ -2929,8 +2929,8 @@ packages:
     dependencies:
       pify: 2.3.0
 
-  /readable-stream/3.6.1:
-    resolution: {integrity: sha512-+rQmrWMYGA90yenhTYsLWAsLsqVC8osOw6PKE1HDYiO0gdPeKe/xDHNzIAIn4C91YQ6oenEhfYqqc1883qHbjQ==}
+  /readable-stream/3.6.2:
+    resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==}
     engines: {node: '>= 6'}
     dependencies:
       inherits: 2.0.4
@@ -3084,8 +3084,8 @@ packages:
       glob: 7.2.3
     dev: false
 
-  /rollup/3.19.0:
-    resolution: {integrity: sha512-xZzJZlH9Ca6cosfdNGPwl2z7Pby8dTi9TrYLPeg6/j7aUoDOhBd706tCUFvbiBj45h/cS7z/a4gS8xd5Yg0jBw==}
+  /rollup/3.19.1:
+    resolution: {integrity: sha512-lAbrdN7neYCg/8WaoWn/ckzCtz+jr70GFfYdlf50OF7387HTg+wiuiqJRFYawwSPpqfqDNYqK7smY/ks2iAudg==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -3365,7 +3365,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 4.2.4
+      minipass: 4.2.5
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
@@ -3579,7 +3579,7 @@ packages:
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
-      rollup: 3.19.0
+      rollup: 3.19.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: false

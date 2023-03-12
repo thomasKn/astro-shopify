@@ -68,10 +68,8 @@
             out:fly={{ duration: 500, x: 500, opacity: 100 }}
             class="pointer-events-auto w-screen max-w-lg max-h-screen bg-white"
           >
-            <div class="flex flex-col min-h-screen max-h-full">
-              <div
-                class="flex items-start justify-between max-h-full shadow-sm p-5"
-              >
+            <div class="flex flex-col min-h-full max-h-screen">
+              <div class="flex items-start justify-between shadow-sm p-5">
                 <h2
                   class="text-2xl flex gap-4 items-center font-bold text-zinc-800"
                   id="slide-over-title"

@@ -10,106 +10,81 @@ export interface Props {
 const { price, title } = Astro.props as Props;
 ---
 
-<h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+<h1 class="text-2xl font-bold text-zinc-800 sm:text-4xl">
   {title}
 </h1>
-<h2 class="sr-only">Product information</h2>
-<p class="mt-6 text-3xl tracking-tight text-gray-900">
+<p class="mt-4 text-3xl font-bold text-emerald-900">
   <Money price={price} />
 </p>
 
 <!-- Reviews -->
-<div class="mt-6">
-  <h3 class="sr-only">Reviews</h3>
-  <div class="flex items-center">
-    <div class="flex items-center">
-      <!--
-                      Heroicon name: mini/star
-
-                      Active: "text-gray-900", Default: "text-gray-200"
-                    -->
+<div class="mt-4">
+  <div class="flex items-center gap-4">
+    <div class="flex">
       <svg
-        class="h-5 w-5 flex-shrink-0 text-gray-900"
+        class="h-5 w-5 text-yellow-400"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        aria-hidden="true"
       >
         <path
-          fill-rule="evenodd"
-          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-          clip-rule="evenodd"></path>
+          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+        ></path>
       </svg>
-
-      <!-- Heroicon name: mini/star -->
       <svg
-        class="h-5 w-5 flex-shrink-0 text-gray-900"
+        class="h-5 w-5 text-yellow-400"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        aria-hidden="true"
       >
         <path
-          fill-rule="evenodd"
-          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-          clip-rule="evenodd"></path>
+          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+        ></path>
       </svg>
-
-      <!-- Heroicon name: mini/star -->
       <svg
-        class="h-5 w-5 flex-shrink-0 text-gray-900"
+        class="h-5 w-5 text-yellow-400"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        aria-hidden="true"
       >
         <path
-          fill-rule="evenodd"
-          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-          clip-rule="evenodd"></path>
+          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+        ></path>
       </svg>
-
-      <!-- Heroicon name: mini/star -->
       <svg
-        class="h-5 w-5 flex-shrink-0 text-gray-900"
+        class="h-5 w-5 text-yellow-400"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        aria-hidden="true"
       >
         <path
-          fill-rule="evenodd"
-          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-          clip-rule="evenodd"></path>
+          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+        ></path>
       </svg>
-
-      <!-- Heroicon name: mini/star -->
       <svg
-        class="h-5 w-5 flex-shrink-0 text-gray-200"
+        class="h-5 w-5 text-gray-200"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        aria-hidden="true"
       >
         <path
-          fill-rule="evenodd"
-          d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-          clip-rule="evenodd"></path>
+          d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+        ></path>
       </svg>
     </div>
-    <p class="sr-only">4 out of 5 stars</p>
-    <div class="ml-3 text-sm font-medium text-emerald-900">117 reviews</div>
+    <a href="#reviews" class="text-sm text-emerald-900 hover:underline"
+      >42 Reviews</a
+    >
   </div>
-</div>
-
-<div class="mt-6">
-  <p class="text-base text-gray-900">
-    This store is for demo purposes only. No orders will be fulfilled. Please
-    visit the brand's <a
-      class="text-emerald-900 underline"
-      href="https://www.lateafternoons.ca"
-      target="_blank"
-      rel="noopener noreferer">website</a
-    > to purchase this product.
-  </p>
+  <div class="mt-6">
+    <p class="text-base text-zinc-900">
+      This store is for demo purposes only. No orders will be fulfilled. Please
+      visit the brand's <a
+        class="text-emerald-900 underline"
+        href="https://www.lateafternoons.ca"
+        target="_blank"
+        rel="noopener noreferer">website</a
+      > to purchase this product.
+    </p>
+  </div>
 </div>

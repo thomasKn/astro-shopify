@@ -18,14 +18,14 @@
 
     // If image is a webp, remove the .webp extension from the url
     // (Shopify image transformations don't work with webp)
-    if (image.url.includes(".webp")) {
+    if (image && image.url.includes(".webp")) {
       return `${image.url.replace(
         ".webp",
         ""
       )}&width=${width}&height=${height}`;
     }
 
-    return `${image.url}&width=${width}&height=${height}`;
+    return image && `${image.url}&width=${width}&height=${height}`;
   }
 </script>
 
@@ -39,9 +39,9 @@
     {loading}
     {sizes}
     srcset={srcSetValues
-      .filter((value) => value < image.width)
+      .filter((value) => image && value < image.width)
       .map((value) => {
-        if (image.width >= value) {
+        if (image && image.width >= value) {
           return `${imageFilter({
             width: value,
           })} ${value}w`;

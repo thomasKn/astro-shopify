@@ -13,10 +13,10 @@ export interface Props {
 const { images } = Astro.props as Props;
 ---
 
-<div class="lg:grid lg:grid-cols-2 lg:gap-x-8">
-  <div class="aspect-w-3 aspect-h-4 block overflow-hidden rounded-lg">
+<div class="grid gap-4 md:grid-cols-8 lg:gap-6">
+  <div class="md:order-2 md:col-span-6">
     <ShopifyImage
-      classList="h-full w-full object-cover object-center"
+      classList="overflow-hidden rounded-lg h-full object-cover"
       loading="eager"
       image={images.nodes[0]}
       sizes={`
@@ -29,14 +29,26 @@ const { images } = Astro.props as Props;
         `}
     />
   </div>
-  <div class="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
+  <div
+    class:list={[
+      "grid",
+      "grid-cols-4",
+      "gap-4",
+      "md:order-1",
+      "md:col-span-2",
+      "md:flex",
+      "md:flex-col",
+      "md:gap-6",
+      { "md:justify-between": images.nodes.length > 2 },
+    ]}
+  >
     {
       images.nodes.map((image, index) => {
-        if (index > 0 && index < 3) {
+        if (index < 3) {
           return (
-            <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+            <div class="overflow-hidden rounded-lg">
               <ShopifyImage
-                classList="h-full w-full object-cover object-center"
+                classList=""
                 loading="eager"
                 image={image}
                 sizes={`

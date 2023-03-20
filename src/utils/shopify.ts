@@ -103,9 +103,9 @@ export const getProductByHandle = async (options: {
     { handle },
     buyerIP
   );
-  const { productByHandle } = data;
+  const { product } = data;
 
-  const parsedProduct = ProductResult.parse(productByHandle);
+  const parsedProduct = ProductResult.parse(product);
 
   return parsedProduct;
 };

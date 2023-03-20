@@ -1,4 +1,4 @@
-const CART_FRAGMENT = `
+const CART_FRAGMENT = `#graphql
 fragment cartFragment on Cart {
   id
   totalQuantity
@@ -48,7 +48,7 @@ fragment cartFragment on Cart {
 }
 `;
 
-const PRODUCT_FRAGMENT = `
+const PRODUCT_FRAGMENT = `#graphql
 fragment productFragment on Product {
   id
   title
@@ -67,7 +67,7 @@ fragment productFragment on Product {
       title
       availableForSale
       quantityAvailable
-      priceV2 {
+      price {
         amount
         currencyCode
       }
@@ -82,7 +82,7 @@ fragment productFragment on Product {
 }
 `;
 
-export const ProductsQuery = `
+export const ProductsQuery = `#graphql
 query ($first: Int!) {
     products(first: $first) {
       edges {
@@ -95,16 +95,16 @@ query ($first: Int!) {
   ${PRODUCT_FRAGMENT}
 `;
 
-export const ProductByHandleQuery = `
+export const ProductByHandleQuery = `#graphql
   query ($handle: String!) {
-    productByHandle(handle: $handle) {
+    product(handle: $handle) {
       ...productFragment
     }
   }
   ${PRODUCT_FRAGMENT}
 `;
 
-export const ProductRecommendationsQuery = `
+export const ProductRecommendationsQuery = `#graphql
   query ($productId: ID!) {
     productRecommendations(productId: $productId) {
       ...productFragment
@@ -113,7 +113,7 @@ export const ProductRecommendationsQuery = `
   ${PRODUCT_FRAGMENT}
 `;
 
-export const GetCartQuery = `
+export const GetCartQuery = `#graphql
   query ($id: ID!) {
     cart(id: $id) {
       ...cartFragment
@@ -122,7 +122,7 @@ export const GetCartQuery = `
   ${CART_FRAGMENT}
 `;
 
-export const CreateCartMutation = `
+export const CreateCartMutation = `#graphql
   mutation ($id: ID!, $quantity: Int!) {
     cartCreate (input: { lines: [{ merchandiseId: $id, quantity: $quantity }] }) {
       cart {
@@ -137,7 +137,7 @@ export const CreateCartMutation = `
   ${CART_FRAGMENT}
 `;
 
-export const AddCartLinesMutation = `
+export const AddCartLinesMutation = `#graphql
   mutation ($cartId: ID!, $merchandiseId: ID!, $quantity: Int) {
     cartLinesAdd (cartId: $cartId, lines: [{ merchandiseId: $merchandiseId, quantity: $quantity }]) {
       cart {
@@ -152,7 +152,7 @@ export const AddCartLinesMutation = `
   ${CART_FRAGMENT}
 `;
 
-export const RemoveCartLinesMutation = `
+export const RemoveCartLinesMutation = `#graphql
   mutation ($cartId: ID!, $lineIds: [ID!]!) {
     cartLinesRemove (cartId: $cartId, lineIds: $lineIds) {
       cart {

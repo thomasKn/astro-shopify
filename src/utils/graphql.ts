@@ -55,7 +55,7 @@ fragment productFragment on Product {
   handle
   images (first: 10) {
     nodes {
-      url(transform: {preferredContentType: WEBP})
+      url
       width
       height
       altText
@@ -74,7 +74,7 @@ fragment productFragment on Product {
     }
   }
   featuredImage {
-    url(transform: {preferredContentType: WEBP})
+    url
     width
     height
     altText

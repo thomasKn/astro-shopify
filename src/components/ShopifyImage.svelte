@@ -16,15 +16,6 @@
   function imageFilter(size: { width: number; height?: number }) {
     const { width, height = "" } = size;
 
-    // If image is a webp, remove the .webp extension from the url
-    // (Shopify image transformations don't work with webp)
-    if (image && image.url.includes(".webp")) {
-      return `${image.url.replace(
-        ".webp",
-        ""
-      )}&width=${width}&height=${height}`;
-    }
-
     return image && `${image.url}&width=${width}&height=${height}`;
   }
 </script>

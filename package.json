@@ -11,21 +11,21 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/svelte": "^2.1.0",
-    "@astrojs/tailwind": "^3.1.1",
-    "@astrojs/vercel": "^3.2.4",
+    "@astrojs/svelte": "^2.1.1",
+    "@astrojs/tailwind": "^3.1.2",
+    "@astrojs/vercel": "^3.3.0",
     "@nanostores/persistent": "^0.8.0",
-    "@shopify/hydrogen-react": "^2023.1.8",
+    "@shopify/hydrogen-react": "^2023.4.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "astro": "^2.3.0",
-    "nanostores": "^0.8.0",
-    "svelte": "^3.58.0",
+    "astro": "^2.4.2",
+    "nanostores": "^0.8.1",
+    "svelte": "^3.59.0",
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "prettier": "^2.8.7",
+    "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.8.0",
-    "prettier-plugin-tailwindcss": "^0.2.7",
-    "tailwindcss": "^3.3.1"
+    "prettier-plugin-tailwindcss": "^0.2.8",
+    "tailwindcss": "^3.3.2"
   }
 }

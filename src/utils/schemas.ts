@@ -44,7 +44,7 @@ export const CartResult = z
   .object({
     id: z.string(),
     cost: z.object({
-      totalAmount: MoneyV2Result,
+      subtotalAmount: MoneyV2Result,
     }),
     checkoutUrl: z.string(),
     totalQuantity: z.number().int(),

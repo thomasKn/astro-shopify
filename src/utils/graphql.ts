@@ -4,7 +4,7 @@ fragment cartFragment on Cart {
   totalQuantity
   checkoutUrl
   cost {
-    totalAmount {
+    subtotalAmount {
       amount
       currencyCode
     }

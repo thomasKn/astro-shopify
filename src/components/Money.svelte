@@ -9,7 +9,7 @@
     style: "currency",
     currency: price.currencyCode,
     currencyDisplay: showCurrency ? "symbol" : "narrowSymbol",
-  }).format(parseInt(price.amount));
+  }).format(parseFloat(price.amount));
 </script>
 
 <span>

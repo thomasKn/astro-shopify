@@ -216,7 +216,7 @@
                       <p>Subtotal</p>
                       <p>
                         <Money
-                          price={$cart.cost.totalAmount}
+                          price={$cart.cost.subtotalAmount}
                           showCurrency={true}
                         />
                       </p>

@@ -166,3 +166,31 @@ export const RemoveCartLinesMutation = `#graphql
   }
   ${CART_FRAGMENT}
 `;
+
+export const UpdateCartLinesMutation = `#graphql
+  mutation ($cartId: ID!, $lines:[CartLineUpdateInput!]!) {
+    cartLinesUpdate(cartId: $cartId, lines: $lines) {
+      cart {
+        ...cartFragment
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+  ${CART_FRAGMENT}
+`;
+
+export const SearchProductsQuery = `#graphql
+  query searchProducts($query: String!, $first: Int) {
+    search(query: $query, first: $first, types: PRODUCT) {
+      edges {
+        node {
+          ...productFragment
+        }
+      }
+    }
+  }
+  ${PRODUCT_FRAGMENT}
+`;

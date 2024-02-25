@@ -4,6 +4,7 @@
     cart,
     isCartDrawerOpen,
     removeCartItems,
+    updateCartItems,
     isCartUpdating,
   } from "../stores/cart";
   import ShopifyImage from "./ShopifyImage.svelte";
@@ -27,6 +28,13 @@
 
   function removeItem(id: string) {
     removeCartItems([id]);
+  }
+
+  function updateItemQuantity() {
+    let lines = $cart.lines?.nodes.map(item => {
+      return { id: item.id, quantity: item.quantity}
+    })
+    updateCartItems(lines);
   }
 
   function closeCartDrawer() {
@@ -152,10 +160,10 @@
                               class="hover:underline w-fit"
                               href={`/products/${item.merchandise.product.handle}`}
                             >
-                              {item.merchandise.product.title}
+                              {item.merchandise.product.title} - <Money price={item.cost.amountPerQuantity} />
                             </a>
                             <p class="text-xs">
-                              <Money price={item.cost.amountPerQuantity} />
+                              <label>Quantity: <input type="number" bind:value={item.quantity} /></label> 
                             </p>
                           </div>
                           <div
@@ -209,9 +217,23 @@
 
               <div class="">
                 {#if $cart && $cart.lines?.nodes.length > 0}
-                  <div class="border-t border-zinc-200 py-6 px-4 sm:px-6">
+                  <div class="border-t border-zinc-200 py-4 px-4 sm:px-6">
+
+                    <div class="mt-6">
+                      <button 
+                        class="button w-full"
+                        type="button"
+                        disabled={$isCartUpdating}
+                        on:click={() => {
+                          updateItemQuantity();
+                        }}
+                      >
+                        Update Cart
+                      </button>
+                      <a href="/" class="button mt-4">Continue Shopping</a>
+                    </div>
                     <div
-                      class="flex justify-between text-base font-medium text-gray-900"
+                      class="flex justify-between text-base font-medium text-gray-900 mt-6"
                     >
                       <p>Subtotal</p>
                       <p>

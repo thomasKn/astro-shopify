@@ -8,6 +8,7 @@ import {
   AddCartLinesMutation,
   GetCartQuery,
   RemoveCartLinesMutation,
+  UpdateCartLinesMutation,
   ProductRecommendationsQuery,
 } from "./graphql";
 
@@ -167,6 +168,18 @@ export const removeCartLines = async (id: string, lineIds: string[]) => {
   });
   const { cartLinesRemove } = data;
   const { cart } = cartLinesRemove;
+  const parsedCart = CartResult.parse(cart);
+
+  return parsedCart;
+};
+
+export const updateCartLines = async (id: string, lines: object[]) => {
+  const data = await makeShopifyRequest(UpdateCartLinesMutation, {
+    cartId: id,
+    lines,
+  });
+  const { cartLinesUpdate } = data;
+  const { cart } = cartLinesUpdate;
   const parsedCart = CartResult.parse(cart);
 
   return parsedCart;

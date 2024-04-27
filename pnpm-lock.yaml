@@ -18,8 +18,8 @@ dependencies:
     specifier: ^0.10.1
     version: 0.10.1(nanostores@0.10.2)
   '@shopify/hydrogen-react':
-    specifier: ^2024.1.1
-    version: 2024.1.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2024.4.1
+    version: 2024.4.1(react-dom@18.2.0)(react@18.2.0)
   '@tailwindcss/aspect-ratio':
     specifier: ^0.4.2
     version: 0.4.2(tailwindcss@3.4.3)
@@ -1059,8 +1059,8 @@ packages:
     resolution: {integrity: sha512-ClaUWpt8oTzjcF0MM1P81AeWyzc1sNSJlAjMG80CbwqbFqXSNz+NpQVUC0icobt3sZn43Sn27M4pHD/Jmp3zHw==}
     dev: false
 
-  /@shopify/hydrogen-react@2024.1.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-3ZDTUZPauXyV6TTxSjsEd0KEybT0jDpaEaB2tPtpjq783rJ1xD+wS9sWqqaKhAY2EUngg03muZiiuBeZIbR4Fw==}
+  /@shopify/hydrogen-react@2024.4.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-rE/JuMsuYRgDgUipDOTfkZq5Vd05y959FJYk5SljWwPJfS1k8fFdt0YFX/42uEDENPoL6qxS2JRMOjwrglE85g==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^18.0.0

@@ -7,7 +7,7 @@ settings:
 dependencies:
   '@astrojs/svelte':
     specifier: ^5.4.0
-    version: 5.4.0(astro@4.5.16)(svelte@4.2.15)(typescript@5.4.4)(vite@5.2.8)
+    version: 5.4.0(astro@4.5.16)(svelte@4.2.15)(typescript@5.4.5)(vite@5.2.8)
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.5.16)(tailwindcss@3.4.3)
@@ -25,7 +25,7 @@ dependencies:
     version: 0.4.2(tailwindcss@3.4.3)
   astro:
     specifier: ^4.5.16
-    version: 4.5.16(typescript@5.4.4)
+    version: 4.5.16(typescript@5.4.5)
   nanostores:
     specifier: ^0.10.2
     version: 0.10.2
@@ -50,8 +50,8 @@ devDependencies:
     specifier: ^3.4.3
     version: 3.4.3
   typescript:
-    specifier: ^5.4.4
-    version: 5.4.4
+    specifier: ^5.4.5
+    version: 5.4.5
 
 packages:
 
@@ -111,7 +111,7 @@ packages:
       prismjs: 1.29.0
     dev: false
 
-  /@astrojs/svelte@5.4.0(astro@4.5.16)(svelte@4.2.15)(typescript@5.4.4)(vite@5.2.8):
+  /@astrojs/svelte@5.4.0(astro@4.5.16)(svelte@4.2.15)(typescript@5.4.5)(vite@5.2.8):
     resolution: {integrity: sha512-D9/CVJ+Fy3fu+FzJ7x+0GnRUhHsJKsU6tW/xQQ1QzrFMABuEoM5U4YKTYtxWkqB4B4jNb7gbA4p9ZtEhYZ3/+w==}
     engines: {node: ^18.17.1 || ^20.3.0 || >=21.0.0}
     peerDependencies:
@@ -120,10 +120,10 @@ packages:
       typescript: ^5.3.3
     dependencies:
       '@sveltejs/vite-plugin-svelte': 3.0.2(svelte@4.2.15)(vite@5.2.8)
-      astro: 4.5.16(typescript@5.4.4)
+      astro: 4.5.16(typescript@5.4.5)
       svelte: 4.2.15
-      svelte2tsx: 0.6.27(svelte@4.2.15)(typescript@5.4.4)
-      typescript: 5.4.4
+      svelte2tsx: 0.6.27(svelte@4.2.15)(typescript@5.4.5)
+      typescript: 5.4.5
     transitivePeerDependencies:
       - supports-color
       - vite
@@ -135,7 +135,7 @@ packages:
       astro: ^3.0.0 || ^4.0.0
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 4.5.16(typescript@5.4.4)
+      astro: 4.5.16(typescript@5.4.5)
       autoprefixer: 10.4.19(postcss@8.4.38)
       postcss: 8.4.38
       postcss-load-config: 4.0.2(postcss@8.4.38)
@@ -168,7 +168,7 @@ packages:
       '@vercel/analytics': 1.2.2(react@18.2.0)
       '@vercel/edge': 1.1.1
       '@vercel/nft': 0.26.4
-      astro: 4.5.16(typescript@5.4.4)
+      astro: 4.5.16(typescript@5.4.5)
       esbuild: 0.20.2
       fast-glob: 3.3.2
       set-cookie-parser: 2.6.0
@@ -1368,7 +1368,7 @@ packages:
     resolution: {integrity: sha512-I1jXZMjAgCMmxT4qxXfPXa6SthSoE8h6gkSI9BGGNv8mP8G/v0blc+qFnZu6K42vTOiuME596QaLO0TP3Lk0xg==}
     dev: false
 
-  /astro@4.5.16(typescript@5.4.4):
+  /astro@4.5.16(typescript@5.4.5):
     resolution: {integrity: sha512-1nOVsMq2OJiXnG6gO0Y77vTAboGN9nLQSy/8SGazq4h6x+alzbsMbQbArBgvaLzOSUXD0m91XLs3D8bOSuavrQ==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
@@ -1426,7 +1426,7 @@ packages:
       shiki: 1.2.4
       string-width: 7.1.0
       strip-ansi: 7.1.0
-      tsconfck: 3.0.3(typescript@5.4.4)
+      tsconfck: 3.0.3(typescript@5.4.5)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
       vite: 5.2.8
@@ -4203,7 +4203,7 @@ packages:
       svelte: 4.2.15
     dev: false
 
-  /svelte2tsx@0.6.27(svelte@4.2.15)(typescript@5.4.4):
+  /svelte2tsx@0.6.27(svelte@4.2.15)(typescript@5.4.5):
     resolution: {integrity: sha512-E1uPW1o6VsbRz+nUk3fznZ2lSmCITAJoNu8AYefWSvIwE2pSB01i5sId4RMbWNzfcwCQl1DcgGShCPcldl4rvg==}
     peerDependencies:
       svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
@@ -4212,7 +4212,7 @@ packages:
       dedent-js: 1.0.1
       pascal-case: 3.1.2
       svelte: 4.2.15
-      typescript: 5.4.4
+      typescript: 5.4.5
     dev: false
 
   /svelte@4.2.15:
@@ -4364,7 +4364,7 @@ packages:
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  /tsconfck@3.0.3(typescript@5.4.4):
+  /tsconfck@3.0.3(typescript@5.4.5):
     resolution: {integrity: sha512-4t0noZX9t6GcPTfBAbIbbIU4pfpCwh0ueq3S4O/5qXI1VwK1outmxhe9dOiEWqMz3MW2LKgDTpqWV+37IWuVbA==}
     engines: {node: ^18 || >=20}
     hasBin: true
@@ -4374,7 +4374,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      typescript: 5.4.4
+      typescript: 5.4.5
     dev: false
 
   /tslib@2.6.2:
@@ -4399,8 +4399,8 @@ packages:
     engines: {node: '>=16'}
     dev: false
 
-  /typescript@5.4.4:
-    resolution: {integrity: sha512-dGE2Vv8cpVvw28v8HCPqyb08EzbBURxDpuhJvTrusShUfGnhHBafDsLdS1EhhxyL6BJQE+2cT3dDPAv+MQ6oLw==}
+  /typescript@5.4.5:
+    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 

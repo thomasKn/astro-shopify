@@ -18,16 +18,16 @@
     "@nanostores/persistent": "^0.10.1",
     "@shopify/hydrogen-react": "^2024.4.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "astro": "^4.5.16",
-    "nanostores": "^0.10.2",
+    "astro": "^4.7.0",
+    "nanostores": "^0.10.3",
     "svelte": "^4.2.15",
-    "zod": "^3.23.4"
+    "zod": "^3.23.5"
   },
   "devDependencies": {
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
-    "prettier-plugin-tailwindcss": "^0.5.13",
+    "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.5"
   }
 }

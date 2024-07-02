@@ -6,6 +6,7 @@ import {
   addCartLines,
   createCart,
   removeCartLines,
+  updateCartLines,
 } from "../utils/shopify";
 import type { CartResult } from "../utils/schemas";
 
@@ -110,6 +111,29 @@ export async function removeCartItems(lineIds: string[]) {
 
   if (cartId) {
     const cartData = await removeCartLines(cartId, lineIds);
+
+    if (cartData) {
+      cart.set({
+        ...cart.get(),
+        id: cartData.id,
+        cost: cartData.cost,
+        checkoutUrl: cartData.checkoutUrl,
+        totalQuantity: cartData.totalQuantity,
+        lines: cartData.lines,
+      });
+      isCartUpdating.set(false);
+    }
+  }
+}
+
+export async function updateCartItems(lines: object[]) {
+  const localCart = cart.get();
+  const cartId = localCart?.id;
+
+  isCartUpdating.set(true);
+
+  if (cartId) {
+    const cartData = await updateCartLines(cartId, lines);
 
     if (cartData) {
       cart.set({

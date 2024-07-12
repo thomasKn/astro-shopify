@@ -18,7 +18,7 @@
     "@nanostores/persistent": "^0.10.1",
     "@shopify/hydrogen-react": "^2024.4.4",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "astro": "^4.11.3",
+    "astro": "^4.11.5",
     "nanostores": "^0.10.3",
     "svelte": "^4.2.18",
     "zod": "^3.23.8"
@@ -28,6 +28,6 @@
     "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-tailwindcss": "^0.6.5",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   }
 }

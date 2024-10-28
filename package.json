@@ -18,7 +18,7 @@
     "@nanostores/persistent": "^0.10.2",
     "@shopify/hydrogen-react": "^2024.7.6",
     "@tailwindcss/aspect-ratio": "^0.4.2",
-    "astro": "^4.16.6",
+    "astro": "^4.16.7",
     "nanostores": "^0.11.3",
     "svelte": "^4.2.19",
     "zod": "^3.23.8"

@@ -2,14 +2,18 @@
   import type { z } from "zod";
   import type { MoneyV2Result } from "../utils/schemas";
 
-  export let price: z.infer<typeof MoneyV2Result>;
-  export let showCurrency: boolean = false;
+  interface Props {
+    price: z.infer<typeof MoneyV2Result>;
+    showCurrency: boolean;
+  }
 
-  $: formatPrice = new Intl.NumberFormat("en-US", {
+  let { price, showCurrency }: Props = $props();
+
+  let formatPrice = $derived.by(() => new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: price.currencyCode,
     currencyDisplay: showCurrency ? "symbol" : "narrowSymbol",
-  }).format(parseFloat(price.amount));
+  }).format(parseFloat(price.amount)));
 </script>
 
 <span>

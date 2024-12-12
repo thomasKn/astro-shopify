@@ -1,16 +1,22 @@
 <script lang="ts">
+  import { preventDefault } from 'svelte/legacy';
+
   import { addCartItem, isCartUpdating, cart } from "../stores/cart";
 
-  export let variantId: string;
-  export let variantQuantityAvailable: number;
-  export let variantAvailableForSale: boolean;
+  interface Props {
+    variantId: string;
+    variantQuantityAvailable: number;
+    variantAvailableForSale: boolean;
+  }
+
+  let { variantId, variantQuantityAvailable, variantAvailableForSale }: Props = $props();
 
   // Check if the variant is already in the cart and if there are any units left
-  $: variantInCart =
-    $cart &&
-    $cart.lines?.nodes.filter((item) => item.merchandise.id === variantId)[0];
-  $: noQuantityLeft =
-    variantInCart && variantQuantityAvailable <= variantInCart?.quantity;
+  let variantInCart =
+    $derived($cart &&
+    $cart.lines?.nodes.filter((item) => item.merchandise.id === variantId)[0]);
+  let noQuantityLeft =
+    $derived(variantInCart && variantQuantityAvailable <= variantInCart?.quantity);
 
   function addToCart(e: Event) {
     const form = e.target as HTMLFormElement;
@@ -24,7 +30,7 @@
   }
 </script>
 
-<form on:submit|preventDefault={(e) => addToCart(e)}>
+<form onsubmit={preventDefault((e) => addToCart(e))}>
   <input type="hidden" name="id" value={variantId} />
   <input type="hidden" name="quantity" value="1" />
 

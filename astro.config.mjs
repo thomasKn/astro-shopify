@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 import tailwind from "@astrojs/tailwind";

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { fade, fly } from "svelte/transition";
   import {
     cart,
@@ -10,20 +12,20 @@
   import Money from "./Money.svelte";
   import { clickOutside } from "../utils/click-outside";
 
-  let cartDrawerEl: HTMLDivElement;
+  let cartDrawerEl: HTMLDivElement = $state();
 
   // Add classes to cart line items if cart is updating
-  $: cartIsUpdatingClass = $isCartUpdating
+  let cartIsUpdatingClass = $derived($isCartUpdating
     ? "opacity-50 pointer-events-none"
-    : "";
+    : "");
 
   // Add focus to cart drawer when it opens
-  $: {
+  run(() => {
     if ($isCartDrawerOpen) {
       document.querySelector("body")?.classList.add("overflow-hidden");
       cartDrawerEl?.focus();
     }
-  }
+  });
 
   function removeItem(id: string) {
     removeCartItems([id]);
@@ -52,7 +54,7 @@
       in:fade={{ duration: 500 }}
       out:fade={{ duration: 500 }}
       class="fixed inset-0 bg-slate-400/50 backdrop-blur-sm transition-opacity"
-    />
+></div>
 
     <div class="fixed inset-0 overflow-hidden">
       <div class="absolute inset-0 overflow-hidden">
@@ -61,7 +63,7 @@
           tabindex="-1"
           use:clickOutside={() => closeCartDrawer()}
           bind:this={cartDrawerEl}
-          on:keydown={onKeyDown}
+          onkeydown={onKeyDown}
         >
           <div
             in:fly={{ duration: 500, x: 500, opacity: 100 }}
@@ -100,7 +102,7 @@
                 </h2>
                 <div class="ml-3 flex h-7 items-center">
                   <button
-                    on:click={() => closeCartDrawer()}
+                    onclick={() => closeCartDrawer()}
                     type="button"
                     class="-m-2 p-2 text-gray-400 hover:text-gray-500"
                   >
@@ -128,7 +130,7 @@
               <div class="flex-1 overflow-y-scroll">
                 <div class="px-5">
                   {#if $cart && $cart.lines?.nodes.length > 0}
-                    <!-- svelte-ignore a11y-no-redundant-roles -->
+                    <!-- svelte-ignore a11y_no_redundant_roles -->
                     <ul
                       role="list"
                       class="divide-y divide-zinc-100 {cartIsUpdatingClass}"
@@ -162,7 +164,7 @@
                             class="col-span-2 items-end flex justify-between flex-col"
                           >
                             <button
-                              on:click={() => {
+                              onclick={() => {
                                 removeItem(item.id);
                               }}
                               type="button"

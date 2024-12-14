@@ -2,10 +2,19 @@
   import type { z } from "zod";
   import type { ImageResult } from "../utils/schemas";
 
-  export let image: z.infer<typeof ImageResult>;
-  export let classList: string = "";
-  export let loading: "lazy" | "eager" = "lazy";
-  export let sizes: string;
+  interface Props {
+    image: z.infer<typeof ImageResult>;
+    classList?: string;
+    loading?: "lazy" | "eager";
+    sizes: string;
+  }
+
+  let {
+    image,
+    classList = "",
+    loading = "lazy",
+    sizes
+  }: Props = $props();
 
   // Values used for srcset attribute of image tag (in pixels)
   const srcSetValues = [

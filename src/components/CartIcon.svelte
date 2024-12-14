@@ -12,7 +12,7 @@
 </script>
 
 <div>
-  <button class="relative" on:click={() => openCart()}>
+  <button class="relative" onclick={() => openCart()}>
     <span class="sr-only">Open your cart</span>
     <svg
       xmlns="http://www.w3.org/2000/svg"

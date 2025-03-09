@@ -16,7 +16,7 @@
     "@astrojs/tailwind": "^5.1.4",
     "@astrojs/vercel": "^8.1.0",
     "@nanostores/persistent": "^0.10.2",
-    "@shopify/hydrogen-react": "^2024.10.1",
+    "@shopify/hydrogen-react": "^2025.1.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "astro": "^5.4.1",
     "nanostores": "^0.11.4",

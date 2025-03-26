@@ -1,6 +1,7 @@
 ---
 import { getProducts } from "./../utils/shopify";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Banner from "../components/Banner.astro";
 import Products from "../components/Products.astro";
 import { setCache } from "../utils/cache";
 
@@ -13,5 +14,6 @@ setCache.short(Astro);
 ---
 
 <BaseLayout title={title}>
+  <Banner />
   <Products products={products} />
 </BaseLayout>

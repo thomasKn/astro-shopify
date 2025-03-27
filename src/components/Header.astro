@@ -1,21 +1,42 @@
 ---
 import CartIcon from "./CartIcon.svelte";
+
+const pages = [
+  {
+    title: "Home",
+    href: "/",
+  },
+  {
+    title: "Products",
+    href: "/products",
+  },
+  {
+    title: "About",
+    href: "/about",
+  },
+  {
+    title: "Contact",
+    href: "/contact",
+  },
+];
 ---
 
 <header class="sticky top-0 z-40">
-  <div class="border-b bg-white/70 py-3 backdrop-blur-2xl">
-    <nav class="container grid grid-cols-3 items-center">
-      <a href="/">
-        <span class="sr-only">Logo</span>
-      </a>
-      <h1
-        class="flex justify-center text-sm font-semibold text-gray-900 sm:text-xl"
-      >
+  <div class="border-b bg-white/70 px-5 py-5 backdrop-blur-2xl">
+    <nav class="container flex items-center justify-between">
+      <h1 class="text-sm font-semibold text-gray-900 sm:text-xl">
         👞 Connosueur Shoes
       </h1>
-      <div class="justify-self-end">
+      <ul class="flex justify-center gap-2">
+        {
+          pages.map((page) => (
+            <li>
+              <a href={page.href}>{page.title}</a>
+            </li>
+          ))
+        }
         <CartIcon client:load />
-      </div>
+      </ul>
     </nav>
   </div>
 </header>

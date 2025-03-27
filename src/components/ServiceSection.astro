@@ -1,0 +1,30 @@
+---
+const services = [
+  {
+    title: "Shoe Repair",
+    description: "We can repair your shoes and make them look like new.",
+  },
+  {
+    title: "Shoe Cleaning",
+    description: "We can clean your shoes and make them look like new.",
+  },
+  {
+    title: "Shoe Customization",
+    description: "We can customize your shoes and make them look like new.",
+  },
+];
+---
+
+<section class="container py-16 sm:py-20">
+  <h2 class="sr-only">Services</h2>
+  <div class="flex justify-center gap-5">
+    {
+      services.map((service) => (
+        <div class="flex w-[300px] flex-col gap-3 text-center">
+          <h3 class="text-lg font-bold">{service.title}</h3>
+          <p>{service.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

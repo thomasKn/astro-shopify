@@ -1,6 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  /* Animation */
+  --animate-shake: shake 0.5s infinite;
+
+  @keyframes shake {
+    0% {
+      transform: translate(1px, 1px) rotate(0deg);
+    }
+    10% {
+      transform: translate(-1px, -2px) rotate(-1deg);
+    }
+    20% {
+      transform: translate(-3px, 0px) rotate(1deg);
+    }
+    30% {
+      transform: translate(3px, 2px) rotate(0deg);
+    }
+    40% {
+      transform: translate(1px, -1px) rotate(1deg);
+    }
+    50% {
+      transform: translate(-1px, 2px) rotate(-1deg);
+    }
+    60% {
+      transform: translate(-3px, 1px) rotate(0deg);
+    }
+    70% {
+      transform: translate(3px, 1px) rotate(-1deg);
+    }
+    80% {
+      transform: translate(-1px, -1px) rotate(1deg);
+    }
+    90% {
+      transform: translate(1px, 2px) rotate(0deg);
+    }
+    100% {
+      transform: translate(1px, -2px) rotate(-1deg);
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
 
 @layer base {
   html {
@@ -22,12 +66,18 @@
     display: none;
   }
 
+  *,
+  :before,
+  :after {
+    @apply border-gray-200;
+  }
+
   .button {
     @apply flex items-center justify-center rounded-lg;
-    @apply bg-gradient-to-br from-emerald-900 via-emerald-800  to-emerald-600;
-    @apply py-3 px-8 text-base font-medium text-white;
+    @apply bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-600;
+    @apply px-8 py-3 text-base font-medium text-white;
     @apply transition hover:opacity-80;
-    @apply focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-1;
+    @apply focus:ring-2 focus:ring-black focus:ring-offset-1 focus:outline-none;
     @apply disabled:cursor-not-allowed disabled:opacity-60;
   }
 }

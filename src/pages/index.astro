@@ -4,6 +4,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Banner from "../components/Banner.astro";
 import Products from "../components/Products.astro";
 import { setCache } from "../utils/cache";
+import ServiceSection from "../components/ServiceSection.astro";
+import BookingSection from "../components/BookingSection.astro";
 
 const title = "Astro + Shopify";
 const headers = Astro.request.headers;
@@ -16,4 +18,6 @@ setCache.short(Astro);
 <BaseLayout title={title}>
   <Banner />
   <Products products={products} />
+  <BookingSection />
+  <ServiceSection />
 </BaseLayout>

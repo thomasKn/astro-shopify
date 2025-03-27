@@ -13,11 +13,11 @@ const { product } = Astro.props as Props;
 
 <a
   href={`/products/${product?.handle}`}
-  class="group overflow-hidden rounded-lg border-l-orange-100 shadow hover:shadow-md"
+  class="group w-[300px] overflow-hidden border-l-orange-100 shadow hover:shadow-md"
 >
   <div class="relative">
     <ShopifyImage
-      classList=""
+      classList="h-[300px]"
       loading="eager"
       image={product?.featuredImage}
       sizes={`
@@ -53,7 +53,7 @@ const { product } = Astro.props as Props;
       </button>
     </div>
   </div>
-  <div class="flex justify-between py-6 px-5 text-zinc-700">
+  <div class="flex justify-between px-5 py-6 text-zinc-700">
     <h3 class="group-hover:underline">{product?.title}</h3>
     <p class="font-bold">
       <Money price={product?.variants.nodes[0].price} />

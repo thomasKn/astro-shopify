@@ -17,10 +17,10 @@ const services = [
 
 <section class="container py-16 sm:py-20">
   <h2 class="sr-only">Services</h2>
-  <div class="flex justify-center gap-5">
+  <div class="flex flex-col justify-center gap-5 sm:flex-row">
     {
       services.map((service) => (
-        <div class="flex w-[300px] flex-col gap-3 text-center">
+        <div class="flex flex-col gap-3 text-center sm:w-[300px]">
           <h3 class="text-lg font-bold">{service.title}</h3>
           <p>{service.description}</p>
         </div>

@@ -13,11 +13,11 @@ const { product } = Astro.props as Props;
 
 <a
   href={`/products/${product?.handle}`}
-  class="group w-[300px] overflow-hidden border-l-orange-100 shadow hover:shadow-md"
+  class="group overflow-hidden border-l-orange-100 shadow hover:shadow-md sm:w-[300px]"
 >
   <div class="relative">
     <ShopifyImage
-      classList="h-[300px]"
+      classList="sm:h-[300px] object-cover"
       loading="eager"
       image={product?.featuredImage}
       sizes={`

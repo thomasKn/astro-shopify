@@ -15,8 +15,8 @@ importers:
         specifier: ^8.1.3
         version: 8.1.3(astro@5.6.1(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.6.1))(react@18.3.1)(rollup@4.39.0)(svelte@5.25.7)
       '@nanostores/persistent':
-        specifier: ^0.10.2
-        version: 0.10.2(nanostores@0.11.4)
+        specifier: ^1.0.0
+        version: 1.0.0(nanostores@0.11.4)
       '@shopify/hydrogen-react':
         specifier: ^2025.1.3
         version: 2025.1.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.139.2)(vite@6.2.5(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.6.1))
@@ -561,11 +561,11 @@ packages:
     peerDependencies:
       three: '>= 0.159.0'
 
-  '@nanostores/persistent@0.10.2':
-    resolution: {integrity: sha512-BEndnLhRC+yP7gXTESepBbSj8XNl8OXK9hu4xAgKC7MWJHKXnEqJMqY47LUyHxK6vYgFnisyHmqq+vq8AUFyIg==}
-    engines: {node: ^18.0.0 || >=20.0.0}
+  '@nanostores/persistent@1.0.0':
+    resolution: {integrity: sha512-iuucWTxcxSLwHvcxBTIAwofDc+KO7cw5EiQklAltJX6Ynx/CKTecOCUG76kF42yNnCZZQcMeuIcl99DkxekIig==}
+    engines: {node: ^20.0.0 || >=22.0.0}
     peerDependencies:
-      nanostores: ^0.9.0 || ^0.10.0 || ^0.11.0
+      nanostores: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^1.0.0
 
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
@@ -2658,7 +2658,7 @@ snapshots:
       promise-worker-transferable: 1.0.4
       three: 0.139.2
 
-  '@nanostores/persistent@0.10.2(nanostores@0.11.4)':
+  '@nanostores/persistent@1.0.0(nanostores@0.11.4)':
     dependencies:
       nanostores: 0.11.4
 

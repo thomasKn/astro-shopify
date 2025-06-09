@@ -13,14 +13,14 @@
   },
   "dependencies": {
     "@astrojs/svelte": "^7.1.0",
-    "@astrojs/vercel": "^8.1.4",
+    "@astrojs/vercel": "^8.1.5",
     "@nanostores/persistent": "^1.0.0",
     "@shopify/hydrogen-react": "^2025.5.0",
     "@tailwindcss/vite": "^4.1.8",
-    "astro": "^5.8.1",
+    "astro": "^5.9.1",
     "nanostores": "^1.0.1",
-    "svelte": "^5.33.14",
-    "zod": "^3.25.49"
+    "svelte": "^5.33.18",
+    "zod": "^3.25.56"
   },
   "devDependencies": {
     "prettier": "^3.5.3",

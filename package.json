@@ -20,7 +20,7 @@
     "astro": "^5.11.1",
     "nanostores": "^1.0.1",
     "svelte": "^5.35.6",
-    "zod": "^3.25.67"
+    "zod": "^4.0.5"
   },
   "devDependencies": {
     "prettier": "^3.6.2",

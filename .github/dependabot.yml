@@ -1,16 +1,14 @@
 version: 2
 updates:
-  - package-ecosystem: 'npm'
-    directory: '/'
-    reviewers:
-      - 'thomasKn'
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: 'weekly'
-      time: '05:30'
-      timezone: 'America/New_York'
+      interval: "weekly"
+      time: "05:30"
+      timezone: "America/New_York"
     groups:
       patch-minor:
         applies-to: version-updates
         update-types:
-        - 'minor'
-        - 'patch'
+          - "minor"
+          - "patch"

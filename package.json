@@ -12,21 +12,21 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/svelte": "^7.2.1",
+    "@astrojs/svelte": "^7.2.2",
     "@astrojs/vercel": "^8.2.9",
     "@nanostores/persistent": "^1.2.0",
     "@shopify/hydrogen-react": "^2025.7.0",
-    "@tailwindcss/vite": "^4.1.16",
-    "astro": "^5.15.3",
-    "nanostores": "^1.0.1",
-    "svelte": "^5.43.2",
-    "zod": "^4.1.12"
+    "@tailwindcss/vite": "^4.1.17",
+    "astro": "^5.16.3",
+    "nanostores": "^1.1.0",
+    "svelte": "^5.45.2",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
-    "prettier": "^3.6.2",
+    "prettier": "^3.7.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.1",
-    "tailwindcss": "^4.1.16",
+    "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3"
   },
   "engines": {

@@ -13,17 +13,17 @@
   },
   "dependencies": {
     "@astrojs/svelte": "^7.2.5",
-    "@astrojs/vercel": "^9.0.3",
+    "@astrojs/vercel": "^9.0.4",
     "@nanostores/persistent": "^1.2.0",
     "@shopify/hydrogen-react": "^2025.7.1",
     "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.8",
+    "astro": "^5.16.11",
     "nanostores": "^1.1.0",
-    "svelte": "^5.46.1",
+    "svelte": "^5.47.0",
     "zod": "^4.3.5"
   },
   "devDependencies": {
-    "prettier": "^3.7.4",
+    "prettier": "^3.8.0",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.1.18",

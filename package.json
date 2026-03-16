@@ -18,8 +18,8 @@
     "@shopify/hydrogen-react": "^2026.1.1",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.18.1",
-    "nanostores": "^1.1.1",
-    "svelte": "^5.53.6",
+    "nanostores": "^1.2.0",
+    "svelte": "^5.53.12",
     "zod": "^4.3.6"
   },
   "devDependencies": {

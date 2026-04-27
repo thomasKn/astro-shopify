@@ -14,19 +14,19 @@
   "dependencies": {
     "@astrojs/svelte": "^7.2.5",
     "@astrojs/vercel": "^9.0.5",
-    "@nanostores/persistent": "^1.3.3",
-    "@shopify/hydrogen-react": "^2026.1.1",
-    "@tailwindcss/vite": "^4.2.1",
+    "@nanostores/persistent": "^1.3.4",
+    "@shopify/hydrogen-react": "^2026.4.2",
+    "@tailwindcss/vite": "^4.2.4",
     "astro": "^5.18.1",
-    "nanostores": "^1.2.0",
-    "svelte": "^5.53.12",
+    "nanostores": "^1.3.0",
+    "svelte": "^5.55.5",
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.2.1",
+    "prettier-plugin-tailwindcss": "^0.7.3",
+    "tailwindcss": "^4.2.4",
     "typescript": "^5.9.3"
   },
   "engines": {

@@ -18,12 +18,12 @@
     "@shopify/hydrogen-react": "^2026.4.3",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^5.18.2",
-    "nanostores": "^1.5.2",
-    "svelte": "^5.56.10",
-    "zod": "^4.4.3"
+    "nanostores": "^1.5.3",
+    "svelte": "^5.57.0",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
-    "prettier": "^3.9.6",
+    "prettier": "^3.9.8",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
